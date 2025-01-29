@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>My Tasty Eatery</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5e6d3;
+        }
+        header {
+            text-align: center;
+            background-color: #8b4513;
+            color: #f5e6d3;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #header-img {
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            color: #f5e6d3;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+        }
+        .menu-item {
+            border: 2px solid #8b4513;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff5e6;
+        }
+        .menu-item img {
+            max-width: 200px;
+            border-radius: 10px;
+        }
+        .price {
+            color: #a0522d;
+        }
+        form {
+            background-color: #fff5e6;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #8b4513;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #8b4513;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <img id="header-img" src="https://www.explorehollywood.com/wp-content/uploads/2019/08/Restaurant_Header_Image_1920x500.jpg" alt="Restaurant Header">
+
+        <h1>My Tasty Eatery</h1>
+
+        <nav>
+
+            <a href="#menu">Menu</a>
+
+            <a href="#order-form">Order Form</a>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section id="menu">
+
+            <h2>Menu</h2>
+
+            <article class="menu-item">
+
+                <figure>
+
+                    <h3>Classic Cheese Pizza</h3>
+
+                    <img src="https://www.foodandwine.com/thmb/Wd4lBRZz3X_8qBr69UOu2m7I2iw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-cheese-pizza-FT-RECIPE0422-31a2c938fc2546c9a07b7011658cfd05.jpg" alt="Pizza">
+
+                    <figcaption>A perfect blend of cheese and sauce. <i class="price">$10</i></figcaption>
+
+                </figure>
+
+            </article>
+
+            <article class="menu-item">
+
+                <figure>
+
+                    <h3>Spaghetti Carbonara</h3>
+
+                    <img src="https://www.allrecipes.com/thmb/Vg2cRidr2zcYhWGvPD8M18xM_WY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/11973-spaghetti-carbonara-ii-DDMFS-4x3-6edea51e421e4457ac0c3269f3be5157.jpg" alt="Pasta">
+
+                    <figcaption>Creamy pasta with bacon and Parmesan. <i class="price">$12</i></figcaption>
+
+                </figure>
+
+            </article>
+
+            <article class="menu-item">
+
+                <figure>
+
+                    <h3>Garden Salad</h3>
+
+                    <img src="https://www.recipetineats.com/tachyon/2021/08/Garden-Salad_47-SQ.jpg" alt="Salad">
+
+                    <figcaption>Fresh greens tossed with a light dressing. <i class="price">$8</i></figcaption>
+
+                </figure>
+
+            </article>
+
+        </section>
+
+        <section id="order-form">
+
+            <h2>Place Your Order</h2>
+
+            <form>
+
+                <label><b>Ordering Details:</b></label>
+
+                <div>
+
+                    <label for="pizzaQty">Classic Cheese Pizza Quantity:</label>
+
+                    <input type="number" id="pizzaQty" name="pizzaQty" min="0" value="0">
+
+                </div>
+
+                <div>
+
+                    <label for="pastaQty">Spaghetti Carbonara Quantity:</label>
+
+                    <input type="number" id="pastaQty" name="pastaQty" min="0" value="0">
+
+                </div>
+
+                <div>
+
+                    <label for="saladQty">Garden Salad Quantity:</label>
+
+                    <input type="number" id="saladQty" name="saladQty" min="0" value="0">
+
+                </div>
+
+                <br>
+
+                <div>
+
+                    <label><b>Extra Add-ons:</b></label><br>
+
+                    <input type="checkbox" id="extraCheese" name="extraCheese">
+
+                    <label for="extraCheese">Extra Cheese (+$1.50)</label><br>
+
+                    <input type="checkbox" id="extraBacon" name="extraBacon">
+
+                    <label for="extraBacon">Additional Bacon (+$2.00)</label>
+
+                </div>
+
+                <br>
+
+                <div>
+
+                    <label><b>Meal Size:</b></label><br>
+
+                    <input type="radio" id="smallSize" name="mealSize" value="Small">
+
+                    <label for="smallSize">Small</label><br>
+
+                    <input type="radio" id="mediumSize" name="mealSize" value="Medium">
+
+                    <label for="mediumSize">Medium</label><br>
+
+                    <input type="radio" id="largeSize" name="mealSize" value="Large">
+
+                    <label for="largeSize">Large</label>
+
+                </div>
+
+                <br>
+
+                <div>
+
+                    <label for="specialRequests"><b>Special Requests:</b></label><br>
+
+                    <textarea id="specialRequests" name="specialRequests"></textarea>
+
+                </div>
+
+                <input type="submit" value="Go To Checkout">
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>Made with love by Rethinger</p>
+
+    </footer>
+
+</body>
+
+</html>
