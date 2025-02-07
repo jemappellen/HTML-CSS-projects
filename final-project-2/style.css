@@ -235,6 +235,10 @@ nav a:hover {
     padding-bottom: 1rem;
 }
 
+form {
+    background-color: transparent;
+}
+
 input[type=email] {
     height: 50px;
     width: 200px;
