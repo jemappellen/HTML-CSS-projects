@@ -1,5 +1,5 @@
 * {
-    background-color: #3A697D;
+    background-color: var(--darkest-tone);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,69 +10,163 @@
 
 h1, nav a {
     font-family: Garamond, serif;
-    font-size: 4.3rem;
-    color: black;
+    font-size: 4rem;
+    color: var(--default-text);
     font-weight: 550;
 }
 
-p,li {
+p {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 16px;
     font-weight: lighter;
     line-height: 1.5;
     letter-spacing: 0.05em;
-    color: #B3BDA6;
+    color: var(--default-text);
+}
+
+/*Variables*/
+
+html {
+    --accent-text: #F5F5EF;
+    --default-text: #B3BDA6;
+    --darkest-tone: #3A697D;
 }
 
 /*Home page*/
 
-#site-logo {
-    display: block;
-    margin: 0 auto;
-    height: 10vh;
-    padding: 6px 0;
+#home-page {
+    position: relative;
+    height: 90vh;
+    width: 100%;
 }
 
-nav {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2; 
-    background-color: transparent;
-}
-
-nav a {
-    text-decoration: none;
-    background-color: transparent;
-}
-
-nav a:hover {
-    color: white;
-    transition: color 200ms ease-out;
-}
-
-#home {
+header {
     position: relative;
     width: 100%;
-    height: 90vh;
+    height: 15vh;
     overflow: hidden;
 }
 
-#home-bg {
+#header-home-bg {
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: 1;
-    opacity: 90%;
+    opacity: 100%;
     filter: brightness(85%);
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    padding: 0px 3rem;
+}
+
+nav img {
+    grid-column: 1 / span 1;
+    background-color: transparent;
+    max-height: 70px;
+    max-width: 100%;
+    height: auto;
+    padding-left: 3rem;
+}
+
+nav ul {
+    grid-column: 2 / span 1;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    background-color: transparent;
+    padding: 0px 3rem;
+}
+
+nav a {
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    color: var(--accent-text);
+    font-size: 2em;
+    text-decoration: none;
+    background-color: transparent;
+    transition: transform 200ms ease-out, color 200ms ease-out;
+    display: inline-block;
+}
+
+nav a:hover {
+    transform: scale(1.1);
+    transform-origin: center;
+    transition: color 200ms ease-out, transform 200ms ease-out;
+}
+
+#home {
+    display: grid;
+    height: 75vh;
+    width: 100%;
+    padding: 1rem 5rem;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 0.5fr 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+#home h1 {
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    color: var(--default-text);
+}
+
+#row-1 {
+    grid-area: 1 / 1 / span 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#row-2 {
+    grid-area: 2 / 2 / span 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#row-3 {
+    grid-area: 3 / 4 / span 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#row-4 {
+    grid-area: 4 / 3 / span 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#home p {
+    grid-area: 2 / 3 / span 1 / -1;
+    position: relative;
+    left: 90px;
+    z-index: 2;
+    background-color: transparent;
+    color: var(--accent-text);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 /*About*/
@@ -81,24 +175,24 @@ nav a:hover {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 100vh;
+    grid-auto-rows: 90vh;
     align-items: center;
 }
 
 #about h1 {
-    padding-left: 2.5rem;
+    padding-left: 5rem;
     justify-self: self-end;
 }
 
 #about img {
     width: 100%;
-    height: auto;
+    height: 90%;
     max-width: 500px;
     justify-self: center;
 }
 
 #about p {
-    padding-right: 2.5rem;
+    padding-right: 5rem;
     max-width: 37ch;
     justify-self: self-start;
 }
@@ -107,17 +201,19 @@ nav a:hover {
 
 #page-1 {
     display: grid;
-    height: 100vh;
+    height: 90vh;
     width: 100%;
     grid-template-rows: 1fr 5fr;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    padding: 2.5rem;
+    padding: 0 5rem 0.5rem;
 }
 
 #page-1 h1 {
     grid-area: 1 / 1 / span 1 / -1;
-    align-self: end;
+    align-self: center;
+    justify-self: center;
+    padding-bottom: 1rem;
 }
 
 #page-1 img {
@@ -131,7 +227,7 @@ nav a:hover {
 }
 
 .project-name {
-    color: white;
+    color: var(--accent-text);
     padding-bottom: 1rem;
 }
 
@@ -142,7 +238,7 @@ nav a:hover {
     height: 100vh;
     width: 100%;
     grid-template-columns: 1fr 2fr;
-    padding: 2.5rem;
+    padding: 5rem;
     gap: 1.5rem;
     align-items: start;
 }
@@ -171,7 +267,7 @@ nav a:hover {
     height: 100vh;
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
-    padding: 2.5rem;
+    padding: 5rem;
     gap: 1.5rem;
 }
 
@@ -185,16 +281,10 @@ nav a:hover {
 /*Contacts*/
 
 #contacts {
-    display: grid;
-    height: 100vh;
+    height: 90vh;
     width: 100%;
     grid-template-rows: 1fr 5fr;
     gap: 1.5rem;
-}
-
-#contacts h1 {
-    padding: 2.5rem 2.5rem 0 2.5rem;
-    align-self: end;
 }
 
 .contacts-wrapper {
@@ -226,14 +316,29 @@ nav a:hover {
     width: 100%;
 }
 
-#contacts p {
+#contacts-text h1 {
     background-color: transparent;
 }
 
 .contact-title {
-    color: white;
+    color: var(--accent-text);
     padding-bottom: 1rem;
 }
+
+#contacts p {
+    background-color: transparent;
+}
+
+#contacts a{
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    color: var(--default-text);
+    background-color: transparent;
+}
+
 
 form {
     background-color: transparent;
@@ -242,7 +347,7 @@ form {
 input[type=email] {
     height: 50px;
     width: 200px;
-    background-color: #B3BDA6;
+    background-color: var(--default-text);
     border: none;
     font-family: 'Libre Franklin', sans-serif;
     font-size: 16px;
@@ -254,7 +359,7 @@ input[type=email] {
 }
 
 input[type=email]:focus {
-    background-color: white;
+    background-color: var(--accent-text);
     outline: none;
 }
 
@@ -270,14 +375,14 @@ input::placeholder {
 .btn {
     min-height: 50px;
     width: 150px;
-    background: #3A697D;
+    background: var(--darkest-tone);
     border: transparent;
     font-family: 'Libre Franklin', sans-serif;
     font-size: 16px;
     font-weight: lighter;
     line-height: 1.5;
     letter-spacing: 0.05em;
-    color: white;
+    color: var(--accent-text);
     cursor: pointer;
 }
 
@@ -311,7 +416,7 @@ footer {
     border: none;
     outline: none;
     background-color: #B3BDA6; 
-    color: white;
+    color: var(--darkest-tone);
     cursor: pointer;
     height: 70px;
     width: 70px;

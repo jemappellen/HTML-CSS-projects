@@ -10,29 +10,51 @@
   <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-    <header id="site-header">
 
-        <img id="site-logo" src="images\signature.png" alt="Monet's signature, 1840-1926"/>
-    
-    </header>
+    <div id="home-page">
 
-    <section id="home">
+        <img id="header-home-bg" src="images/nav-bg.jpg" alt="Blue Water Lilies, 1916-1919"/>
 
-        <img id="home-bg" src="images\nav-bg.jpg" alt="Blue Water Lilies, 1916-1919"/>
-        <nav>
-            <a href="#site-header">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="#contacts">CONTACTS</a>
-        </nav>
+        <header>
 
-    </section>
+            <nav>
+                <img src="images\signature.png" alt="Monet's signature, 1840-1926"/></li>
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                    <li><a href="#contacts">CONTACTS</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <section id="home">
+
+            <div id="row-1"> 
+                <h1>IF</h1>
+            </div>
+            <div id="row-2">
+                <h1>MONET</h1>
+            </div>
+            <div id="row-3">
+                <h1>HAD</h1>
+            </div>
+            <div id="row-4">
+                <h1>CODÉDEX</h1>
+            </div>
+            <p>Step into the vibrant world of Claude Monet,</br> 
+            the father of Impressionism.</p>
+        
+        </section>
+
+    </div>
 
     <section id="about">
         
         <h1>ABOUT ME</h1>
         <img src="images\portrait.jpg" alt="Claude Monet's portrait by Pierre-Auguste Renoir (The Reader), 1873-1874">
-        <p>Bonjour.<br/><br/>
+        <p><span style="color: var(--accent-text)">Bonjour.</span><br/><br/>
 
         Welcome to my portfolio. I am Claude Monet,
         a&nbsp;painter dedicated to capturing the&nbsp;
@@ -103,19 +125,20 @@
 
     <section id="contacts">
 
-        <h1>CONTACTS</h1>
         <div class="contacts-wrapper">
             <img id="contacts-bg" src="images\contact-bg.jpg" alt="Contacts background picture">
             <div id="contacts-text">
 
+                <h1>CONTACTS</h1></br></br>
+
                 <p class="contact-title">Visit Giverny</p>
-                <p>My home and garden, open for visitors.</p><br/>
+                <p>My <a href="https://claudemonetgiverny.fr/en/decouvrir/claude-monets-house/">home and garden</a>, open for visitors.</p><br/>
 
                 <p class="contact-title">Commission a Painting</p>
                 <p>Just kidding. My brush is at rest.</p><br/>
 
                 <p class="contact-title">Newsletter</p>
-                <p>Subscribe to my weekly Newsletter.</p><br/>
+                <p>Subscribe to my weekly newsletter.</p><br/>
                 <form action="" method="">
                     <input type="email" minlength="3" placeholder="your@email.com">
                     <button class="btn" type="submit">Subscribe</button>
