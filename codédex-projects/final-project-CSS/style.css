@@ -21,7 +21,7 @@ p,li {
     font-weight: lighter;
     line-height: 1.5;
     letter-spacing: 0.05em;
-    color: #b3bda6;
+    color: #B3BDA6;
 }
 
 /*Home page*/
@@ -242,7 +242,7 @@ form {
 input[type=email] {
     height: 50px;
     width: 200px;
-    background-color: #b3bda6;
+    background-color: #B3BDA6;
     border: none;
     font-family: 'Libre Franklin', sans-serif;
     font-size: 16px;
@@ -255,6 +255,7 @@ input[type=email] {
 
 input[type=email]:focus {
     background-color: white;
+    outline: none;
 }
 
 input::placeholder {
@@ -297,4 +298,29 @@ footer {
     z-index: 1;
     background-color: transparent;
     width: 100%;
+}
+
+/*Back to Top Button*/
+
+#back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 35px;
+    z-index: 4; 
+    border: none;
+    outline: none;
+    background-color: #B3BDA6; 
+    color: white;
+    cursor: pointer;
+    height: 70px;
+    width: 70px;
+    padding-bottom: 5px;;
+    border-radius: 50%;
+    font-size: 2rem;
+    opacity: 0.7;
+}
+
+#back-to-top:hover {
+    opacity: 0.9;
 }
