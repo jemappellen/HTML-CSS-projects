@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Monet - Personal Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="home-page">
+
+        <img id="header-home-bg" src="images/nav-bg.jpg" alt="Blue Water Lilies, 1916-1919"/>
+
+        <header>
+
+            <nav>
+                <img src="images\signature.png" alt="Monet's signature, 1840-1926"/></li>
+                <ul>
+                    <li><a href="#home-page">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                    <li><a href="#contacts">CONTACTS</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <section id="home">
+
+            <div id="row-1"> 
+                <h1>IF</h1>
+            </div>
+            <div id="row-2">
+                <h1>MONET</h1>
+            </div>
+            <div id="row-3">
+                <h1>HAD</h1>
+            </div>
+            <div id="row-4">
+                <h1>CODÉDEX</h1>
+            </div>
+            <p>Step into the vibrant world of Claude Monet,</br> 
+            the father of Impressionism.</p>
+        
+        </section>
+
+    </div>
+
+    <section id="about">
+        
+        <h1>ABOUT ME</h1>
+        <img src="images\portrait.jpg" alt="Claude Monet's portrait by Pierre-Auguste Renoir (The Reader), 1873-1874">
+        <p><span style="color: var(--accent-text)">Bonjour.</span><br/><br/>
+
+        Welcome to my portfolio. I am Claude Monet,
+        a&nbsp;painter dedicated to capturing the&nbsp;
+        beauty of light, movement, and nature.<br/><br/>
+
+        As a pioneer of Impressionism, my work explores 
+        how color and atmosphere can transform the way 
+        we see the world.<br/><br/>
+        
+        Over&nbsp;the&nbsp;course of my career, 
+        I have developed a&nbsp;signature style that focuses 
+        on fleeting moments—whether it's the&nbsp;soft 
+        reflections of&nbsp;water lilies or the&nbsp;shifting 
+        tones of the&nbsp;Parisian skyline.</p>
+
+    </section>
+
+    <section id="projects">
+
+        <div id="page-1"> 
+            <h1>PROJECTS</h1>
+            <img src="images\rouen-cathedral-1.jpg" alt="The Portal of Rouen Cathedral in Morning Light, 1894">
+            <img src="images\rouen-cathedral-2.jpg" alt="Rouen Cathedral, West Facade, Sunlight, 1894">
+            <div id="project-description-1">
+                <p class="project-name">Rouen Cathedral</p>
+                <p>A study of light, atmosphere, and 
+                architectural form. Between 1892 and 
+                1894, I painted the cathedral’s façade 
+                at different times of the day, capturing 
+                the shifting interplay of sunlight, 
+                shadow, and color.</p>
+            </div>
+        </div>
+
+        <div id="page-2">
+            <div id="project-description-2">
+                <p class="project-name">Water Lilies Series</p>
+                <p>Rather than focusing on a fixed perspective, 
+                I&nbsp;sought to immerse the viewer in an infinite, 
+                meditative space—where water, air, and light 
+                become indistinguishable. Through more than 
+                250&nbsp;paintings, I explored the ever-changing 
+                qualities of&nbsp;nature, from the delicate 
+                pastels of&nbsp;morning to the deep blues and 
+                golds of&nbsp;twilight.</p>
+            </div>
+            <div class="image-container">
+                <img src="images\water-lilies-1.jpg" alt="Water Lilies, 1920-1926">
+                <img src="images\water-lilies-2.jpg" alt="Water Lilies, Agapanthus (right panel), 1920-1926">
+                <img src="images\water-lilies-3.jpeg" alt="Water Lilies, 1917-1919">
+                <img src="images\water-lilies-4.jpg" alt="Water Lily Pond, 1919">
+            </div>
+        </div>
+
+        <div id="page-3">
+            <img src="images\impression-sunrise.jpg" alt="Impression. Sunrise, 1872">
+            <div id="project-description-3">
+                <p class="project-name">Impression, Sunrise</p>
+                <p>Painted in the port of Le Havre, my hometown, 
+                this piece captures the soft glow of the rising 
+                sun as it dissolves into mist, blending sky 
+                and water into a delicate harmony of blues 
+                and oranges.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="contacts">
+
+        <div class="contacts-wrapper">
+            <img id="contacts-bg" src="images\contact-bg.jpg" alt="Contacts background picture">
+            <div id="contacts-text">
+
+                <h1>CONTACTS</h1></br></br>
+
+                <p class="contact-title">Visit Giverny</p>
+                <p>My <a href="https://claudemonetgiverny.fr/en/decouvrir/claude-monets-house/">home and garden</a>, open for visitors.</p><br/>
+
+                <p class="contact-title">Commission a Painting</p>
+                <p>Just kidding. My brush is at rest.</p><br/>
+
+                <p class="contact-title">Newsletter</p>
+                <p>Subscribe to my weekly newsletter.</p><br/>
+                <form action="" method="">
+                    <input type="email" minlength="3" placeholder="your@email.com">
+                    <button class="btn" type="submit">Subscribe</button>
+                </form>
+
+            </div>
+            <footer>
+                <p>Made with love by @jemappelleN.</p>
+            </footer>
+        </div>
+
+    </section>
+
+    <button id="back-to-top" title="Back to top">&#129121;</button>
+
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("back-to-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
+        // Add event listener to the button
+        mybutton.addEventListener("click", topFunction);
+    </script>
+
+</body>
+</html>
