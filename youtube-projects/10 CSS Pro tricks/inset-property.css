@@ -1,0 +1,92 @@
+
+/*Option 1*/
+
+.parent{
+    border: 3px solid white;
+    height: 300px;
+    width: 300px;
+    color: white;
+    padding: 1em;
+}
+
+.child{
+    background-color: blue;
+    position: absolute;
+    inset: 10px 30px 0px 100px;
+}
+
+/*Option 2*/
+
+.parent{
+    border: 3px solid white;
+    height: 300px;
+    width: 300px;
+    color: white;
+    padding: 1em;
+    position: relative;
+}
+
+.child{
+    background-color: blue;
+    position: absolute;
+    inset: 10px 30px 0px 100px; /*Positions inside the parent*/
+}
+
+/*Option 3*/
+
+.parent{
+    border: 3px solid white;
+    height: 300px;
+    width: 300px;
+    color: white;
+    padding: 1em;
+    position: relative;
+}
+
+.child{
+    background-color: blue;
+    position: absolute;
+    inset: 0; /*The child fills the parent entirely*/
+}
+
+/*Option 4*/
+
+.parent{
+    border: 3px solid white;
+    height: 300px;
+    width: 300px;
+    color: white;
+    padding: 1em;
+    position: relative;
+}
+
+.child{
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+    position: absolute;
+    inset: 0;
+    margin: auto; /*Centers the child inside the parent*/
+}
+
+/*Option 5 - Heavier code*/
+
+.parent{
+    border: 3px solid white;
+    height: 300px;
+    width: 300px;
+    color: white;
+    padding: 1em;
+    position: relative;
+}
+
+.child{
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50%, -50%; /*Centers the child inside the parent*/
+}
+

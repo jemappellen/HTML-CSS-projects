@@ -1,0 +1,40 @@
+/*Putting a gradient on the border*/
+
+button::after{
+    border-image: linear-gradient(to right, #f06, #f90) 1;
+    border-width: ...;
+}
+
+/*For a responsive image gallery*/
+
+HTML:
+
+<div class="layout-container">
+    <img width="300px" src="images/img-1.jpg" alt="">
+    <img src="images/img-2.jpg" alt="">
+    <img src="images/img-3.jpg" alt="">
+    <img src="images/img-4.jpg" alt="">
+    <img src="images/img-5.jpg" alt="">
+    <img src="images/img-6.jpg" alt="">
+</div>
+
+CSS:
+
+.layout-container{
+    width: min(1000px, 100%); /*Responsive width*/
+    margin: 0 auto; /*Centers the layout*/
+    columns: 3 300px;
+    column-gap: 1em;
+}
+
+img{
+    width:100%; /*Makes the images resize automatically*/
+    dosplay: block;
+    margin-bottom: 1em;
+}
+
+/*Properties that level up the design of form elements*/
+
+accent-color: #f06; /*Used to change the highlighted color of any form element*/
+caret-color: #f06; /*To change the color of the cursor that is blinking inside the text input*/
+
