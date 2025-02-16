@@ -1,0 +1,128 @@
+/*Putting a gradient on the border*/
+
+button::after{
+    border-image: linear-gradient(to right, #f06, #f90) 1;
+    border-width: ...;
+}
+
+/*For a responsive image gallery*/
+
+HTML:
+
+<div class="layout-container">
+    <img width="300px" src="images/img-1.jpg" alt="">
+    <img src="images/img-2.jpg" alt="">
+    <img src="images/img-3.jpg" alt="">
+    <img src="images/img-4.jpg" alt="">
+    <img src="images/img-5.jpg" alt="">
+    <img src="images/img-6.jpg" alt="">
+</div>
+
+CSS:
+
+.layout-container{
+    width: min(1000px, 100%); /*Responsive width*/
+    margin: 0 auto; /*Centers the layout*/
+    columns: 3 300px; /*Creates 3 columns with a width of 300px*/
+    column-gap: 1em;
+}
+
+img{
+    width:100%; /*Makes the images resize automatically*/
+    dosplay: block;
+    margin-bottom: 1em;
+}
+
+/*Properties that level up the design of form elements*/
+
+accent-color: #f06; /*Used to change the highlighted color of any form element*/
+caret-color: #f06; /*To change the color of the cursor that is blinking inside the text input*/
+
+/*Shadows*/
+
+box-shadow: 0 0 10px rgba(0,0,0,0.1); /*Creates a shadow around the element*/
+
+text-shadow: 1px 1px 1px rgba(0,0,0,0.1); /*Creates a shadow around the text*/
+
+filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.1)); /*Creates a shadow around the real edges of the icon*/
+
+/*Creating animated accordions (collapsable HTML elements)*/
+
+HTML 
+
+<head>
+    <body>
+        <div class="container">
+            <div class="summary">
+                Click me
+            </div>
+            <div class="hidden">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+            </div>
+        </div>
+    </body>
+</head>
+
+
+CSS
+
+.container{
+    margin: 0 auto;
+    width: min(500px, 100%);
+    padding: 1.5em;
+
+    background-color: #2a2f3d;
+    color: white;
+    cursor: pointer;
+    transition: 150ms ease;
+
+    display: grid;
+    grid-template-rows: 1.5em 0fr;
+}
+
+.open{
+    grid-template-rows: 1.5em 1fr; /*Applied with JS*/
+}
+
+p{
+    margin-top: 2.5em;
+}
+
+.hidden{
+    overflow: hidden;
+}
+
+/*Masks for images*/
+
+img{
+    clip-path: circle(50% at 50% 50%); /*Creates a circle mask*/
+}
+
+/*Conic gradient animation*/
+
+@property --angle{
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.element{
+    height: 400px;
+    width: 400px;
+
+    background-image: conic-gradient(from var(--angle), red, blue, red);
+    animation: 1s spin linear infinite;
+}
+
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+
+
+
+

@@ -1,16 +1,22 @@
+html{
+    background-color: black;
+}
+
+div{
+    display: block;
+}
 
 /*Option 1*/
 
-.parent{
+.parent-1{
     border: 3px solid white;
     height: 300px;
     width: 300px;
     color: white;
     padding: 1em;
-    position: relative;
 }
 
-.child{
+.child-1{
     background-color: blue;
     position: absolute;
     inset: 10px 30px 0px 100px;
@@ -18,7 +24,7 @@
 
 /*Option 2*/
 
-.parent{
+.parent-2{
     border: 3px solid white;
     height: 300px;
     width: 300px;
@@ -27,15 +33,15 @@
     position: relative;
 }
 
-.child{
-    background-color: blue;
+.child-2{
+    background-color: orange;
     position: absolute;
     inset: 10px 30px 0px 100px; /*Positions inside the parent*/
 }
 
 /*Option 3*/
 
-.parent{
+.parent-3{
     border: 3px solid white;
     height: 300px;
     width: 300px;
@@ -44,15 +50,15 @@
     position: relative;
 }
 
-.child{
-    background-color: blue;
+.child-3{
+    background-color: green;
     position: absolute;
     inset: 0; /*The child fills the parent entirely*/
 }
 
 /*Option 4*/
 
-.parent{
+.parent-4{
     border: 3px solid white;
     height: 300px;
     width: 300px;
@@ -61,10 +67,10 @@
     position: relative;
 }
 
-.child{
+.child-4{
     height: 50px;
     width: 50px;
-    background-color: blue;
+    background-color: red;
     position: absolute;
     inset: 0;
     margin: auto; /*Centers the child inside the parent*/
@@ -72,7 +78,7 @@
 
 /*Option 5 - Heavier code*/
 
-.parent{
+.parent-5{
     border: 3px solid white;
     height: 300px;
     width: 300px;
@@ -81,10 +87,10 @@
     position: relative;
 }
 
-.child{
+.child-5{
     height: 50px;
     width: 50px;
-    background-color: blue;
+    background-color: purple;
     position: absolute;
     top: 50%;
     left: 50%;
