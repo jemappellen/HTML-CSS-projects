@@ -392,12 +392,6 @@ input::placeholder {
     transition: filter 200ms ease-out;
 }
 
-nav a:hover {
-    transform: scale(1.1);
-    transform-origin: center;
-    transition: opacity 200ms ease-out, transform 200ms ease-out;
-    opacity: 1;
-
 /*Footer*/
 
 footer {
