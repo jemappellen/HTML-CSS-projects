@@ -3,12 +3,16 @@
 
 let monthOfBirth = 'march'.trim().toUpperCase();
 
-function zodiacSignReveal() {
+//Using arrow function notation
+
+const zodiacSignReveal = () => {
   console.log(`The world was blessed to receive you in ${monthOfBirth}!
 
 🐈 You are...
 `);
 }
+
+//Switch statement
 
 switch (monthOfBirth) {
   case 'JANUARY':
