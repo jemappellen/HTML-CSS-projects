@@ -1,9 +1,11 @@
 // 🐱 Catoscope
 // What the Stars Say About Your Nine Lives! 🐾
 
+//Enter month of birth to launch the catoscope
+
 let monthOfBirth = 'march'.trim().toUpperCase();
 
-//Using arrow function notation
+//The month of birth is logged to the console
 
 const zodiacSignReveal = () => {
   console.log(`The world was blessed to receive you in ${monthOfBirth}!
@@ -12,7 +14,7 @@ const zodiacSignReveal = () => {
 `);
 }
 
-//Switch statement
+//The horoscope is logged to the console based on the month of birth
 
 switch (monthOfBirth) {
   case 'JANUARY':
