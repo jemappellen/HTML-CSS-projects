@@ -26,9 +26,9 @@
         </div>
         <div class="nav-container" role="navigation" aria-label="Main Navigation">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#info">Info</a></li>
-                <li><a href="#settings">Settings</a></li>
+                <li><a id="home">Home</a></li>
+                <li><a id="info">Info</a></li>
+                <li><a id="settings">Settings</a></li>
             </ul>
             <img class="logo" src="./assets/logo.svg" alt="Lumon Industries Logo">
         </div>
@@ -44,7 +44,7 @@
             </ul>
         </div>
         <div class="timer">
-            <p><span class="minutes">25</span>:<span class="seconds">00</span></p>
+            <div class="minutes"></div>:<div class="seconds"></div>
         </div>
         <button id="start-button">Start</button>
         <button id="pause-button">Pause</button>
@@ -58,6 +58,7 @@
         <p class="quote-text"></p>
         <p class="quote-author"></p>
     </div>
-    <script src="./script.js"></script>
+    
 </body>
+<script src="./script.js"></script>
 </html>

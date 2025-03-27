@@ -144,15 +144,11 @@ header {
 
 .timer {
     grid-area: timer;
-    display: none;
-    margin-top: 1rem;
-    font-family: 'Michroma', sans-serif;
-    font-size: 5rem;
 }
 
 .timer p {
     font-family: 'Michroma', sans-serif;
-    font-size: 5rem;
+    font-size: 6rem;
 }
 
 #start-button, #pause-button {

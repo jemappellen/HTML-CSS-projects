@@ -6,6 +6,7 @@ const settings = document.querySelector('#settings');
 let infoContent = document.querySelector('#info-content');
 let settingsContent = document.querySelector('#settings-content');
 
+/*
 infoContent.hidden = true;
 settingsContent.hidden = true;
 
@@ -34,6 +35,7 @@ const showSettings = () => {
 home.addEventListener('click', showHome);
 info.addEventListener('click', showInfo);
 settings.addEventListener('click', showSettings);
+*/
 
 // Timer selector
 const pomodoro = document.querySelector('#pomodoro');
@@ -46,29 +48,66 @@ let pauseButton = document.querySelector('#pause-button');
 
 let minutes = document.querySelector('.minutes');
 let seconds = document.querySelector('.seconds');
+let progressPercentage = document.querySelector('#progress-percentage');
+let progressIndicator = document.querySelector('#progress-indicator');
 
 const selectPomodoro = () => {
-    timer.style.display = 'block';
-    minutes.innerHTML = '25';
+  timer.style.display = 'block';
+  minutes.innerHTML = '25';
+  seconds.innerHTML = '00';
+  progressPercentage.innerText = '0%';
+  progressIndicator.style.width = '0%';
 }
-
-pomodoro.onclick = selectPomodoro;
 
 const selectShortBreak = () => {
-    timer.style.display = 'block';
-    minutes.innerHTML = '05';
+  timer.style.display = 'block';
+  minutes.innerHTML = '05';
+  seconds.innerHTML = '00';
+  progressPercentage.innerText = '0%';
+  progressIndicator.style.width = '0%';
 }
-
-shortBreak.onclick = selectShortBreak;
 
 const selectLongBreak = () => {
-    timer.style.display = 'block';
-    minutes.innerHTML = '15';
+  timer.style.display = 'block';
+  minutes.innerHTML = '15';
+  seconds.innerHTML = '00';
+  progressPercentage.innerText = '0%';
+  progressIndicator.style.width = '0%';
 }
 
-longBreak.onclick = selectLongBreak;
+pomodoro.addEventListener('click', selectPomodoro);
+shortBreak.addEventListener('click', selectShortBreak);
+longBreak.addEventListener('click', selectLongBreak);
 
-document.querySelector('#progress-percentage').innerText = '0%';
+// Timer functionality
+let interval;
+let totalSeconds;
+
+const startTimer = () => {
+    totalSeconds = parseInt(minutes.innerHTML) * 60;
+    interval = setInterval(() => {
+        totalSeconds--;
+        let mins = Math.floor(totalSeconds / 60);
+        let secs = totalSeconds % 60;
+        minutes.innerHTML = mins.toString().padStart(2, '0');
+        seconds.innerHTML = secs.toString().padStart(2, '0');
+        
+        let progress = ((totalSeconds / (parseInt(minutes.innerHTML) * 60)) * 100).toFixed(2);
+        progressPercentage.innerText = `${progress}%`;
+        progressIndicator.style.width = `${progress}%`;
+        if (totalSeconds <= 0) {
+            clearInterval(interval);
+            alert('Time is up!');
+        }
+    }, 1000);
+}
+
+const pauseTimer = () => {
+    clearInterval(interval);
+}
+
+startButton.addEventListener('click', startTimer);
+pauseButton.addEventListener('click', pauseTimer);
 
 
 
