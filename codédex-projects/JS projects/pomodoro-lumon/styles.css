@@ -1,4 +1,5 @@
 /*Global Styles*/
+
 * {
     margin: 0;
     padding: 0;
@@ -9,12 +10,14 @@
 }
 
 html {
-    font-family: 'Inter Tight', 'Helvetica', sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    --all-text-font: 'Inter Tight', 'Helvetica', sans-serif;
+    --timer-quote-font: 'Michroma', sans-serif;
     --text-color: #3D4C52;
-    color: var(--text-color);
     --hover-text-transition: font-weight 150ms ease-out;
+    --smooth-appearance-transition: opacity 200ms ease-out, visibility 200ms ease-out;
+    --timer-text-size: 1.6rem;
+    font-family: var(--all-text-font);
+    color: var(--text-color);
     background-image: linear-gradient(to bottom, #acc3ad, white, white);
     background-size: cover;
 }
@@ -76,6 +79,7 @@ header {
     text-decoration: none;
     font-weight: 400;
     transition: var(--hover-text-transition);
+    cursor: pointer;
 }
 
 .nav-container a:hover {
@@ -97,8 +101,8 @@ header {
 .timer-setup {
     grid-area: timer-setup;
     display: grid;
-    grid-template-columns: 1fr 400px 1fr;
-    grid-auto-rows: auto;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-auto-rows: repeat(5, auto);
     grid-template-areas:
     ". timer-instruction ."
     ". timer-selector ."
@@ -110,7 +114,7 @@ header {
 
 .timer-instruction {
     grid-area: timer-instruction;
-    font-size: 1.8rem;
+    font-size: var(--timer-text-size);
     font-weight: 700;
     border-left: var(--text-color) 5px solid;
     padding-left: 7px;
@@ -123,7 +127,7 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    position: relative;
+    margin-top: 1rem;
 }
 
 .timer-selector ul {
@@ -132,7 +136,7 @@ header {
 }
 
 .timer-selector li {
-    font-size: 1.8rem;
+    font-size: var(--timer-text-size);
     cursor: pointer;
     transition: var(--hover-text-transition);
 }
@@ -142,25 +146,44 @@ header {
     font-weight: 700;
 }
 
-.timer {
-    grid-area: timer;
+.timer-selected {
+    font-weight: 700;
 }
 
-.timer p {
-    font-family: 'Michroma', sans-serif;
-    font-size: 6rem;
+.timer {
+    grid-area: timer;
+    opacity: 0;
+    visibility: hidden; /* Use visibility to reserve space */
+    display: flex; 
+    font-family: var(--timer-quote-font);
+    font-size: 5.5rem;
+    transition: var(--smooth-appearance-transition);
+}
+
+.timer.visible {
+    opacity: 1;/* Fully visible */
+    visibility: visible; /* Visible when class is added */
 }
 
 #start-button, #pause-button {
     grid-area: timer-buttons;
+    opacity: 0;
+    visibility: hidden; /* Use visibility to reserve space */
+    display: flex;
     max-height: fit-content;
-    font-family: 'Inter Tight', 'Helvetica', sans-serif;
-    font-size: 1.8rem;
+    font-family: var(--all-text-font);
+    font-size: var(--timer-text-size);
     color: var(--text-color);
     background: transparent;
     text-align: left;
     border: none;
     cursor: pointer;
+    transition: var(--smooth-appearance-transition);
+}
+
+#start-button.visible, #pause-button.visible {
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Visible when class is added */
 }
 
 #start-button:hover, #pause-button:hover {
@@ -168,28 +191,83 @@ header {
     font-weight: 700;
 }
 
-#pause-button {
-    display: none;
-}
-
 #progress-bar {
     grid-area: progress-bar;
+    opacity: 0;
+    visibility: hidden; /* Use visibility to reserve space */
+    display: flex;
+    position: relative;
     margin-top: 1rem;
-    height: 1.8rem;
+    margin-bottom: 6rem;
+    height: 2rem;
     width: 100%;
     background-color: var(--text-color);
-    margin-bottom: 6rem;
+    transition: var(--smooth-appearance-transition);
+}
+
+#progress-bar.visible {
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Visible when class is added */
 }
 
 #progress-percentage {
-    font-size: 1.8rem;
+    font-size: var(--timer-text-size);
     color: white;
     text-align: center;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
 }
 
 #progress-indicator {
     height: 100%;
     width: 0%;
     background-color: #ACC3AD;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 
+/*Quote generator*/
+
+#quote-generator {
+    grid-area: quote-generator;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+    "quote ."
+    "quote-author .";
+    margin-right: 6rem;
+    margin-bottom: 6rem;
+}
+
+#quote, #quote-author {
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+}
+
+#quote.visible, #quote-author.visible {
+    opacity: 1;
+}
+
+#quote {
+    grid-area: quote;
+    font-family: var(--timer-quote-font);
+    font-size: 2rem;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+   
+}
+
+#quote-author {
+    grid-area: quote-author;
+    font-family: var(--timer-quote-font);
+    font-size: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
