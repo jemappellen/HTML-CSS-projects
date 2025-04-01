@@ -1,30 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Navigation mouse events' listeners
-  const home = document.getElementById('home');
-  const info = document.getElementById('info');
   const settings = document.getElementById('settings');
 
-  let infoContent = document.getElementById('info-content');
   let settingsContent = document.getElementById('settings-content');
 
   /*
-  infoContent.hidden = true;
   settingsContent.hidden = true;
-
-  const showHome = () => {
-    infoContent.hidden = true;
-    settingsContent.hidden = true;
-    home.classList.add('active');
-    info.classList.remove('active');
-    settings.classList.remove('active');
-  }
-
-  const showInfo = () => {
-    infoContent.hidden = false;
-    home.classList.remove('active');
-    info.classList.add('active');
-    settings.classList.remove('active');
-  }
 
   const showSettings = () => {
     settingsContent.hidden = false;
@@ -66,24 +47,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Quotes for Pomodoro sessions
   const pomodoroQuotes = [
-      { text: "A handshake is available upon request.", author: "Ms. Cobel" },
-      { text: "Every time you find yourself here, it’s because you chose to come back.", author: "Mark S." },
-      { text: "No, I don't think severance divides us. I think it brings us together.", author: "Helly R." },
-      { text: "Your resignation request is denied.", author: "Ms. Cobel" },
-      { text: "My delts are embarrassingly good today. My outie does muscle shows for sure.", author: "Dylan G." },
-      { text: "The work is mysterious and important.", author: "Mark S." },
-      { text: "Hey, I know this has been a tough quarter. I’m gonna see about rustling you up some special perks. That sound good?", author: "Mr. Milchick" },
-      { text: "Okay, kids. Let’s find out what’s for dinner.", author: "Irving B." }
+    { text: "A handshake is available upon request.", author: "Ms. Cobel" },
+    { text: "Every time you find yourself here, it’s because you chose to come back.", author: "Mark S." },
+    { text: "No, I don't think severance divides us. I think it brings us together.", author: "Helly R." },
+    { text: "Your resignation request is denied.", author: "Ms. Cobel" },
+    { text: "My delts are embarrassingly good today. My outie does muscle shows for sure.", author: "Dylan G." },
+    { text: "The work is mysterious and important.", author: "Mark S." },
+    { text: "Hey, I know this has been a tough quarter. I’m gonna see about rustling you up some special perks. That sound good?", author: "Mr. Milchick" },
+    { text: "Okay, kids. Let’s find out what’s for dinner.", author: "Irving B." }
   ];
 
   // Quotes for break sessions
   const breakQuotes = [
-      { text: "Take a moment. The pause is a kindness.", author: "Ms. Casey" },
-      { text: "You feel peaceful. You feel rested. You feel happy.", author: "Ms. Casey" },
-      { text: "You have been granted a wellness break. Savor it.", author: "Ms. Cobel" },
-      { text: "Your Outie is kind. Your Outie has brightened people’s days by merely smiling.", author: "Ms. Casey" },
-      { text: "You will be reinvigorated for the company.", author: "Mr. Milchick" }
+    { text: "Take a moment. The pause is a kindness.", author: "Ms. Casey" },
+    { text: "You feel peaceful. You feel rested. You feel happy.", author: "Ms. Casey" },
+    { text: "You have been granted a wellness break. Savor it.", author: "Ms. Cobel" }
   ];
+
+  const longBreakQuotes = [
+    { text: "Your Outie is kind. Your Outie has brightened people’s days by merely smiling.", author: "Ms. Casey" },
+    { text: "You will be reinvigorated for the company.", author: "Mr. Milchick" },
+    { text: "Upon request, I can also perform a hug.", author: "Ms. Casey" }
+  ];
+
+  // Quotes generator
 
   const displayQuote = (quote) => {
     if (quoteText && quoteAuthor) { // Ensure elements are not null
@@ -109,12 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
       quoteInterval = setInterval(() => {
           currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
           displayQuote(quotes[currentQuoteIndex]);
-      }, 30000); // Change quote every 30 seconds
+      }, 20000); // Change quote every 20 seconds
   };
 
   const resetTimerUI = () => {
     clearInterval(interval);
-    clearInterval(quoteInterval); // Clear the quote rotation interval
+    clearInterval(quoteInterval);
     isPaused = true;
     startButton.classList.add('visible'); // Add class for transition
     pauseButton.classList.remove('visible'); // Remove class for transition
@@ -149,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const selectShortBreak = () => {
       resetTimerUI();
+      hideQuote();
       selectTimer(shortBreak);
       setTimeout(() => {
         timer.classList.add('visible');
@@ -162,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const selectLongBreak = () => {
       resetTimerUI();
+      hideQuote();
       selectTimer(longBreak);
       setTimeout(() => {
         timer.classList.add('visible');
@@ -169,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         seconds.innerHTML = '00';
         totalSeconds = 15 * 60;
         initialTotalSeconds = totalSeconds;
-        startQuoteRotation(breakQuotes);
+        startQuoteRotation(longBreakQuotes);
     }, 200); // Delay to allow the transition to complete
   };
 

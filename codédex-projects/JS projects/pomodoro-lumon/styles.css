@@ -30,7 +30,7 @@ body {
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
     "header header"
-    "timer-setup quote-generator"
+    "timer-setup quote-generator-settings"
     "music-player music-player";
 }
 
@@ -91,7 +91,7 @@ header {
     font-weight: 700;
 }
 
-.logo {
+#logo {
     height: 120px;
     width: auto;
 }
@@ -232,7 +232,7 @@ header {
 /*Quote generator*/
 
 #quote-generator {
-    grid-area: quote-generator;
+    grid-area: quote-generator-settings;
     display: grid;
     grid-template-columns: 4fr 1fr;
     grid-template-rows: auto auto;
@@ -271,3 +271,126 @@ header {
     justify-content: flex-end;
     align-items: flex-start;
 }
+
+/* Settings */
+
+#settings-content {
+    grid-area: quote-generator-settings;
+    margin-top: 4rem;
+    margin-right: 6rem;
+    margin-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#timer-settings {
+    font-size: var(--timer-text-size);
+    margin-bottom: 2rem;
+}
+
+.settings-instruction {
+    font-size: var(--timer-text-size);
+    font-weight: 700;
+    border-left: var(--text-color) 5px solid;
+    padding-left: 7px;
+    margin-bottom: 2rem;
+}
+
+#timer-settings ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas: 
+    "pomodoro-settings short-break-settings long-break-settings"
+    "pomodoro-duration short-break-duration long-break-duration";
+}
+
+#pomodoro-settings {
+    grid-area: pomodoro-settings;
+}
+
+#short-break-settings {
+    grid-area: short-break-settings;
+}
+
+#long-break-settings {
+    grid-area: long-break-settings;
+}
+
+#pomodoro-duration {
+    grid-area: pomodoro-duration;
+    margin-top: 0.5rem;
+    width: 60%;
+    height: 2rem;
+    border: none;
+    background-color: #3D4C52;
+}
+
+#short-break-duration {
+    grid-area: short-break-duration;
+    margin-top: 0.5rem;
+    width: 67%;
+    height: 2rem;
+    border: none;
+    background-color: #3D4C52;
+}
+
+#long-break-duration {
+    grid-area: long-break-duration;
+    margin-top: 0.5rem;
+    width: 64%;
+    height: 2rem;
+    border: none;
+    background-color: #3D4C52;
+}
+
+input[type="number"] {
+    font-family: var(--all-text-font);
+    font-size: var(--timer-text-size);
+    color: white;
+    padding-left: 4px;
+}
+
+#theme-settings {
+    font-size: var(--timer-text-size);
+}
+
+#theme-settings ul {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+#green-theme {
+    width: 55px;
+    height: 55px;
+    background-image: linear-gradient(to bottom, #acc3ad, white, white);
+    background-size: cover;
+    border-radius: 50%;
+    border: 4px solid #ACC3AD;
+    margin-right: 1.5rem;
+}
+
+#blue-theme {
+    width: 55px;
+    height: 55px;
+    background-image: linear-gradient(to bottom, #BFD5D9, white, white);
+    background-size: cover;
+    border-radius: 50%;
+    border: 4px solid #BFD5D9;
+}
+
+#confirm-button {
+    font-size: var(--timer-text-size);
+    color: var(--text-color);
+    background: transparent;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: var(--hover-text-transition);
+}
+
+#confirm-button:hover {
+    transition: var(--hover-text-transition);
+    font-weight: 700;
+}
+

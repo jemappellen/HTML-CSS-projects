@@ -16,8 +16,6 @@
     
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <link href="./styles.css" rel="stylesheet"/>
-    
-    <script src="./script.js" defer></script>
 
     <title>Pomodoro Interval Process</title>
 </head>
@@ -28,11 +26,9 @@
         </div>
         <div class="nav-container" role="navigation" aria-label="Main Navigation">
             <ul>
-                <li><a id="home">Home</a></li>
-                <li><a id="info">Info</a></li>
                 <li><a id="settings">Settings</a></li>
             </ul>
-            <img class="logo" src="./assets/logo.svg" alt="Lumon Industries Logo">
+            <img id="logo" src="./assets/logo.svg" alt="Lumon Industries Logo">
         </div>
     </header>
 
@@ -60,6 +56,28 @@
         <p id="quote"></p>
         <p id="quote-author"></p>
     </div>
-    
+
+    <div id="settings-content">
+        <div id="timer-settings">
+            <div class="settings-instruction">Adjust timer's duration:</div>
+            <ul>
+                <li><label id="pomodoro-settings" for="pomodoro-duration">Pomodoro</label></li>
+                <li><label id="short-break-settings" for="short-break-duration">Short Break</label></li>
+                <li><label id="long-break-settings" for="long-break-duration">Long Break</label></li>
+                <li><input type="number" id="pomodoro-duration" value="25" min="1" max="60"></li>
+                <li><input type="number" id="short-break-duration" value="5" min="1" max="30"></li>
+                <li><input type="number" id="long-break-duration" value="15" min="1" max="60"></li>
+            </ul>
+        </div>
+        <div id="theme-settings">
+            <div class="settings-instruction">Select a theme:</div>
+            <ul>
+                <li><div id="green-theme"></div></li>
+                <li><div id="blue-theme"></div></li>
+            </ul>
+        </div>
+        <button id="confirm-button">Confirm</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
