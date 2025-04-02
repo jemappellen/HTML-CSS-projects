@@ -34,6 +34,17 @@ body {
     "music-player music-player";
 }
 
+.button-style {
+    font-family: var(--all-text-font);
+    font-size: var(--timer-text-size);
+    color: var(--text-color);
+    background: transparent;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: var(--smooth-appearance-transition), var(--hover-text-transition);
+}
+
 /*Navigation bar*/
 
 header {
@@ -169,16 +180,6 @@ header {
     grid-area: timer-buttons;
     opacity: 0;
     visibility: hidden; /* Use visibility to reserve space */
-    display: flex;
-    max-height: fit-content;
-    font-family: var(--all-text-font);
-    font-size: var(--timer-text-size);
-    color: var(--text-color);
-    background: transparent;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    transition: var(--smooth-appearance-transition);
 }
 
 #start-button.visible, #pause-button.visible {
@@ -281,11 +282,40 @@ header {
     margin-bottom: 6rem;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
 #timer-settings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 0.5fr;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+    "timer-settings-instruction timer-settings-instruction close-button ."
+    "pomodoro-settings short-break-settings long-break-settings ."
+    "pomodoro-duration short-break-duration long-break-duration .";
     font-size: var(--timer-text-size);
     margin-bottom: 2rem;
+}
+
+#timer-settings-instruction {
+    grid-area: timer-settings-instruction;
+}
+
+#close-button {
+    grid-area: close-button;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#timer-settings i {
+    color:#ACC3AD;
+    cursor: pointer;
+    transition: color 200ms ease-out;
+}
+
+#timer-settings i:hover {
+    color:#3D4C52;
+    transition: color 200ms ease-out;
 }
 
 .settings-instruction {
@@ -294,15 +324,6 @@ header {
     border-left: var(--text-color) 5px solid;
     padding-left: 7px;
     margin-bottom: 2rem;
-}
-
-#timer-settings ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
-    grid-template-areas: 
-    "pomodoro-settings short-break-settings long-break-settings"
-    "pomodoro-duration short-break-duration long-break-duration";
 }
 
 #pomodoro-settings {
@@ -319,45 +340,71 @@ header {
 
 #pomodoro-duration {
     grid-area: pomodoro-duration;
-    margin-top: 0.5rem;
-    width: 60%;
-    height: 2rem;
-    border: none;
-    background-color: #3D4C52;
 }
 
 #short-break-duration {
     grid-area: short-break-duration;
-    margin-top: 0.5rem;
-    width: 67%;
-    height: 2rem;
-    border: none;
-    background-color: #3D4C52;
 }
 
 #long-break-duration {
     grid-area: long-break-duration;
+}
+
+.duration-settings {
     margin-top: 0.5rem;
-    width: 64%;
+    width: 4ch;
     height: 2rem;
     border: none;
-    background-color: #3D4C52;
+    border-radius: 5px;
+    background-color: #ACC3AD;
 }
 
 input[type="number"] {
     font-family: var(--all-text-font);
     font-size: var(--timer-text-size);
-    color: white;
-    padding-left: 4px;
+    color: #3D4C52;
+    padding: 4px;
+}
+
+/* Webkit Browsers (Chrome, Edge, Safari) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1; /* Ensure spinners are always visible */
+    background: none; /* Make them transparent */
+    border: none;
+    width: 16px;
+    height: 2rem;
+}
+
+/* Firefox (Doesn't allow default spinner styling) */
+input[type="number"] {
+    -moz-appearance: textfield; /* Hides default spinner */
+}
+
+/* Optional: Add hover effect for better visibility */
+input[type="number"]::-webkit-inner-spin-button:hover,
+input[type="number"]::-webkit-outer-spin-button:hover {
+    background: rgba(0, 0, 0, 0.1); /* Light hover effect */
 }
 
 #theme-settings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+    "theme-settings-instruction theme-settings-instruction"
+    "theme-options theme-options";
     font-size: var(--timer-text-size);
+    margin-bottom: 2rem;
+}
+
+#theme-settings-instruction {
+    grid-area: theme-settings-instruction;
 }
 
 #theme-settings ul {
+    grid-area: theme-options;
     display: flex;
-    margin-bottom: 2rem;
 }
 
 #green-theme {
@@ -379,18 +426,21 @@ input[type="number"] {
     border: 4px solid #BFD5D9;
 }
 
-#confirm-button {
-    font-size: var(--timer-text-size);
-    color: var(--text-color);
-    background: transparent;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    transition: var(--hover-text-transition);
-}
-
-#confirm-button:hover {
+#save-button:hover {
     transition: var(--hover-text-transition);
     font-weight: 700;
+}
+
+#close-button:hover {
+    transition: var(--hover-text-transition);
+    font-weight: 700;
+}
+
+#settings-buttons {
+    display: flex;
+}
+
+#save-button {
+    margin-right: 2rem;
 }
 

@@ -17,6 +17,8 @@
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <link href="./styles.css" rel="stylesheet"/>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Pomodoro Interval Process</title>
 </head>
 <body>
@@ -44,8 +46,8 @@
         <div class="timer">
             <div class="minutes"></div>:<div class="seconds"></div>
         </div>
-        <button id="start-button">Start</button>
-        <button id="pause-button">Pause</button>
+        <button class="button-style" id="start-button">Start</button>
+        <button class="button-style" id="pause-button">Pause</button>
         <div id="progress-bar">
             <div id="progress-percentage"></div>
             <div id="progress-indicator"></div>
@@ -58,25 +60,32 @@
     </div>
 
     <div id="settings-content">
+
         <div id="timer-settings">
-            <div class="settings-instruction">Adjust timer's duration:</div>
-            <ul>
-                <li><label id="pomodoro-settings" for="pomodoro-duration">Pomodoro</label></li>
-                <li><label id="short-break-settings" for="short-break-duration">Short Break</label></li>
-                <li><label id="long-break-settings" for="long-break-duration">Long Break</label></li>
-                <li><input type="number" id="pomodoro-duration" value="25" min="1" max="60"></li>
-                <li><input type="number" id="short-break-duration" value="5" min="1" max="30"></li>
-                <li><input type="number" id="long-break-duration" value="15" min="1" max="60"></li>
-            </ul>
+
+            <div class="settings-instruction" id="timer-settings-instruction">Adjust timer's duration:</div>
+            <i class="fa-solid fa-xmark" id="close-button"></i>
+            
+            <label id="pomodoro-settings" for="pomodoro-duration">Pomodoro</label>
+            <label id="short-break-settings" for="short-break-duration">Short Break</label>
+            <label id="long-break-settings" for="long-break-duration">Long Break</label>
+
+            <input type="number" class="duration-settings" id="pomodoro-duration" name="pomodoro-duration" value="25" min="1" max="60" pattern="\d*" inputmode="numeric" aria-label="Pomodoro duration in minutes">
+            <input type="number" class="duration-settings" id="short-break-duration" name="short-break-duration" value="5" min="1" max="30" pattern="\d*" inputmode="numeric" aria-label="Short break duration in minutes">
+            <input type="number" class="duration-settings" id="long-break-duration" name="long-break-duration" value="15" min="1" max="60" pattern="\d*" inputmode="numeric" aria-label="Long break duration in minutes">
+
         </div>
+
         <div id="theme-settings">
-            <div class="settings-instruction">Select a theme:</div>
+            <div class="settings-instruction" id="theme-settings-instruction">Select a theme:</div>
             <ul>
                 <li><div id="green-theme"></div></li>
                 <li><div id="blue-theme"></div></li>
             </ul>
         </div>
-        <button id="confirm-button">Confirm</button>
+
+        <button class="button-style" id="save-button">Save</button>
+        
     </div>
     <script src="script.js"></script>
 </body>
