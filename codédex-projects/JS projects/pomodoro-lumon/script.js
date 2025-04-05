@@ -1,24 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Navigation mouse events' listeners
-  const settings = document.getElementById('settings');
-
-  let settingsContent = document.getElementById('settings-content');
-
-  /*
-  settingsContent.hidden = true;
-
-  const showSettings = () => {
-    settingsContent.hidden = false;
-    home.classList.remove('active');
-    info.classList.remove('active');
-    settings.classList.add('active');
-  }
-
-  home.addEventListener('click', showHome);
-  info.addEventListener('click', showInfo);
-  settings.addEventListener('click', showSettings);
-  */
-
   // Timer selector
   const pomodoro = document.getElementById('pomodoro');
   const shortBreak = document.getElementById('short-break');
@@ -71,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   // Quotes generator
-
   const displayQuote = (quote) => {
     if (quoteText && quoteAuthor) { // Ensure elements are not null
       quoteText.textContent = `“${quote.text}”`;
@@ -83,20 +62,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const hideQuote = () => {
     if (quoteText && quoteAuthor) {
-        quoteText.classList.remove('visible');
-        quoteAuthor.classList.remove('visible');
+      quoteText.classList.remove('visible');
+      quoteAuthor.classList.remove('visible');
     }
   };
 
   const startQuoteRotation = (quotes) => {
-      hideQuote(); // Hide the quote initially
-      currentQuoteIndex = 0;
-      displayQuote(quotes[currentQuoteIndex]);
+    hideQuote(); // Hide the quote initially
+    currentQuoteIndex = 0;
+    displayQuote(quotes[currentQuoteIndex]);
 
-      quoteInterval = setInterval(() => {
-          currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-          displayQuote(quotes[currentQuoteIndex]);
-      }, 20000); // Change quote every 20 seconds
+    quoteInterval = setInterval(() => {
+      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+      displayQuote(quotes[currentQuoteIndex]);
+    }, 20000); // Change quote every 20 seconds
   };
 
   const resetTimerUI = () => {
@@ -108,57 +87,58 @@ document.addEventListener('DOMContentLoaded', () => {
     progressPercentage.innerText = '0%';
     progressIndicator.style.width = '0%';
     timer.classList.remove('visible'); // Remove class for transition
-};
+  };
 
   const selectTimer = (selectedTimer) => {
-      // Remove the selected class from all timer list items
-      pomodoro.classList.remove('timer-selected');
-      shortBreak.classList.remove('timer-selected');
-      longBreak.classList.remove('timer-selected');
+    // Remove the selected class from all timer list items
+    pomodoro.classList.remove('timer-selected');
+    shortBreak.classList.remove('timer-selected');
+    longBreak.classList.remove('timer-selected');
 
-      // Add the selected class to the clicked timer list item
-      selectedTimer.classList.add('timer-selected');
+    // Add the selected class to the clicked timer list item
+    selectedTimer.classList.add('timer-selected');
+    updateQuoteVisibility(); // Update visibility after selecting a timer
   };
 
   const selectPomodoro = () => {
-      resetTimerUI();
-      hideQuote();
-      selectTimer(pomodoro);
-      setTimeout(() => {
-        timer.classList.add('visible');
-        minutes.innerHTML = '25';
-        seconds.innerHTML = '00';
-        totalSeconds = 25 * 60;
-        initialTotalSeconds = totalSeconds;
-        startQuoteRotation(pomodoroQuotes);
+    resetTimerUI();
+    hideQuote();
+    selectTimer(pomodoro);
+    setTimeout(() => {
+      timer.classList.add('visible');
+      minutes.innerHTML = '25';
+      seconds.innerHTML = '00';
+      totalSeconds = 25 * 60;
+      initialTotalSeconds = totalSeconds;
+      startQuoteRotation(pomodoroQuotes);
     }, 200); // Delay to allow the transition to complete
   };
 
   const selectShortBreak = () => {
-      resetTimerUI();
-      hideQuote();
-      selectTimer(shortBreak);
-      setTimeout(() => {
-        timer.classList.add('visible');
-        minutes.innerHTML = '05';
-        seconds.innerHTML = '00';
-        totalSeconds = 5 * 60;
-        initialTotalSeconds = totalSeconds;
-        startQuoteRotation(breakQuotes);
+    resetTimerUI();
+    hideQuote();
+    selectTimer(shortBreak);
+    setTimeout(() => {
+      timer.classList.add('visible');
+      minutes.innerHTML = '05';
+      seconds.innerHTML = '00';
+      totalSeconds = 5 * 60;
+      initialTotalSeconds = totalSeconds;
+      startQuoteRotation(breakQuotes);
     }, 200); // Delay to allow the transition to complete
   };
 
   const selectLongBreak = () => {
-      resetTimerUI();
-      hideQuote();
-      selectTimer(longBreak);
-      setTimeout(() => {
-        timer.classList.add('visible');
-        minutes.innerHTML = '15';
-        seconds.innerHTML = '00';
-        totalSeconds = 15 * 60;
-        initialTotalSeconds = totalSeconds;
-        startQuoteRotation(longBreakQuotes);
+    resetTimerUI();
+    hideQuote();
+    selectTimer(longBreak);
+    setTimeout(() => {
+      timer.classList.add('visible');
+      minutes.innerHTML = '15';
+      seconds.innerHTML = '00';
+      totalSeconds = 15 * 60;
+      initialTotalSeconds = totalSeconds;
+      startQuoteRotation(longBreakQuotes);
     }, 200); // Delay to allow the transition to complete
   };
 
@@ -170,80 +150,84 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressBar = document.getElementById('progress-bar');
 
   const pomodoroMessages = [
-      "You have completed a unit of focused labor. Kier smiles upon you.",
-      "The numbers are pleased. You may rest… briefly.",
-      "Your toil has not gone unnoticed. A reprieve is sanctioned.",
-      "You have honored the pact of diligence. A short respite awaits."
+    "You have completed a unit of focused labor. Kier smiles upon you.",
+    "The numbers are pleased. You may rest… briefly.",
+    "Your toil has not gone unnoticed. A reprieve is sanctioned.",
+    "You have honored the pact of diligence. A short respite awaits."
   ];
 
   const breakMessages = [
-      "Recalibration complete. Return to your purpose.",
-      "Your moment of kindness has expired. Please proceed.",
-      "Welcome back. The work missed you.",
-      "Your outie entrusted you with this duty. Honor them."
+    "Recalibration complete. Return to your purpose.",
+    "Your moment of kindness has expired. Please proceed.",
+    "Welcome back. The work missed you.",
+    "Your outie entrusted you with this duty. Honor them."
   ];
 
   const startTimer = () => {
-      startButton.classList.remove('visible');
-      pauseButton.classList.add('visible');
-      progressBar.classList.add('visible');
+    startButton.classList.remove('visible');
+    pauseButton.classList.add('visible');
+    progressBar.classList.add('visible');
 
-      if (isPaused) {
-          // Resume the timer from where it was paused
-          isPaused = false;
-      } else {
-          // Start the timer from the beginning
-          totalSeconds = initialTotalSeconds;
+    if (isPaused) {
+      // Resume the timer from where it was paused
+      isPaused = false;
+    } else {
+      // Start the timer from the beginning
+      totalSeconds = initialTotalSeconds;
+    }
+
+    interval = setInterval(() => {
+      totalSeconds--;
+
+      let mins = Math.floor(totalSeconds / 60);
+      let secs = totalSeconds % 60;
+
+      minutes.innerHTML = mins.toString().padStart(2, '0');
+      seconds.innerHTML = secs.toString().padStart(2, '0');
+
+      // Calculate progress as an integer percentage
+      let progress = Math.floor(((initialTotalSeconds - totalSeconds) / initialTotalSeconds) * 100);
+      progressPercentage.innerText = `${progress}%`;
+      progressIndicator.style.width = `${progress}%`;
+
+      if (totalSeconds === 0) {
+        clearInterval(interval);
+        ring.play();
+        showNotification();
       }
-
-      interval = setInterval(() => {
-          totalSeconds--;
-
-          let mins = Math.floor(totalSeconds / 60);
-          let secs = totalSeconds % 60;
-
-          minutes.innerHTML = mins.toString().padStart(2, '0');
-          seconds.innerHTML = secs.toString().padStart(2, '0');
-
-          // Calculate progress as an integer percentage
-          let progress = Math.floor(((initialTotalSeconds - totalSeconds) / initialTotalSeconds) * 100);
-          progressPercentage.innerText = `${progress}%`;
-          progressIndicator.style.width = `${progress}%`;
-
-          if (totalSeconds === 0) {
-              clearInterval(interval);
-              ring.play();
-              showNotification();
-          }
-      }, 1000);
+    }, 1000);
   };
 
+  ring.addEventListener('error', () => {
+    console.error('Failed to load the ring sound.');
+  });
+
   const pauseTimer = () => {
-      startButton.classList.add('visible');
-      pauseButton.classList.remove('visible');
-      clearInterval(interval);
-      isPaused = true;
+    startButton.classList.add('visible');
+    pauseButton.classList.remove('visible');
+    clearInterval(interval);
+    isPaused = true;
   };
 
   const showNotification = () => {
-      if (Notification.permission === "granted") {
-          let message;
-          if (totalSeconds === 25 * 60) {
-              message = pomodoroMessages[pomodoroCount % pomodoroMessages.length];
-              pomodoroCount++;
-          } else {
-              message = breakMessages[Math.floor(Math.random() * breakMessages.length)];
-          }
-          new Notification("Timer Complete", {
-              body: message,
-          });
-      } else if (Notification.permission !== "denied") {
-          Notification.requestPermission().then(permission => {
-              if (permission === "granted") {
-                  showNotification();
-              }
-          });
+    if (Notification.permission === "granted") {
+      let message;
+      if (totalSeconds === 25 * 60) {
+        message = pomodoroMessages[pomodoroCount % pomodoroMessages.length];
+        pomodoroCount++;
+      } else {
+        message = breakMessages[Math.floor(Math.random() * breakMessages.length)];
       }
+      new Notification("Timer Complete", {
+        body: message,
+      });
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          showNotification();
+        }
+      });
+    }
   };
 
   startButton.addEventListener('click', startTimer);
@@ -251,4 +235,84 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Request notification permission on page load
   Notification.requestPermission();
+
+  const settingsLink = document.getElementById('settings');
+  const closeButton = document.getElementById('close-button');
+  const settingsContent = document.getElementById('settings-content');
+
+  // Toggle quote visibility
+  const toggleQuoteVisibility = (visible) => {
+    if (visible) {
+      quoteText.classList.add('visible');
+      quoteAuthor.classList.add('visible');
+    } else {
+      quoteText.classList.remove('visible');
+      quoteAuthor.classList.remove('visible');
+    }
+  };
+
+  const isTimerSelected = () => {
+    return document.querySelector('.timer-selected') !== null;
+  };
+
+  const updateQuoteVisibility = () => {
+    const settingsHidden = !settingsContent.classList.contains('visible');
+    const timerSelected = isTimerSelected();
+    toggleQuoteVisibility(settingsHidden && timerSelected);
+  };
+
+  // Toggle settings content visibility when the settings link is clicked
+  settingsLink.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+    if (settingsContent.classList.contains('visible')) {
+      settingsContent.classList.remove('visible');
+      settingsContent.setAttribute('aria-hidden', 'true');
+      // Ensure no elements within settingsContent have focus
+      settingsContent.querySelectorAll('button, [tabindex="0"]').forEach(el => el.blur());
+    } else {
+      settingsContent.classList.add('visible');
+      settingsContent.setAttribute('aria-hidden', 'false');
+      document.getElementById('pomodoro-duration').focus(); // Focus on the first input
+    }
+    updateQuoteVisibility(); // Update visibility after toggling settings
+  });
+
+  // Hide settings content when the close button is clicked
+  closeButton.addEventListener('click', () => {
+    settingsContent.classList.remove('visible');
+    settingsContent.setAttribute('aria-hidden', 'true');
+    // Ensure no elements within settingsContent have focus
+    settingsContent.querySelectorAll('button, [tabindex="0"]').forEach(el => el.blur());
+    updateQuoteVisibility(); // Update visibility after closing settings
+  });
+
+  // Theme change
+  let currentTheme = 'green-theme-set'; // Default theme
+
+  const applyTheme = (theme) => {
+    document.documentElement.classList.remove('green-theme-set', 'blue-theme-set');
+    document.documentElement.classList.add(theme);
+    currentTheme = theme;
+  };
+
+  const saveTheme = () => {
+    localStorage.setItem('theme', currentTheme);
+    alert('Theme saved!');
+  };
+
+  // Load saved theme on page load
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  }
+
+  // Event listeners for theme buttons
+  document.getElementById('green-theme').addEventListener('click', () => applyTheme('green-theme-set'));
+  document.getElementById('blue-theme').addEventListener('click', () => applyTheme('blue-theme-set'));
+
+  // Event listener for save button
+  document.getElementById('save-button').addEventListener('click', saveTheme);
+
+  // Ensure quote visibility is updated on page load
+  updateQuoteVisibility();
 });

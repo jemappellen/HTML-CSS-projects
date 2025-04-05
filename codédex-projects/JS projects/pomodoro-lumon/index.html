@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="green-theme-set">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Pomodoro Interval Process</title>
+    <title>Pomodoro by Lumon</title>
 </head>
 <body>
     <header>
@@ -28,7 +28,7 @@
         </div>
         <div class="nav-container" role="navigation" aria-label="Main Navigation">
             <ul>
-                <li><a id="settings">Settings</a></li>
+                <li><a href="#settings-content" id="settings">Settings</a></li>
             </ul>
             <img id="logo" src="./assets/logo.svg" alt="Lumon Industries Logo">
         </div>
@@ -38,12 +38,12 @@
         <div class="timer-instruction">Select an activity and press 'Start':</div>
         <div class="timer-selector">
             <ul>
-                <li id="pomodoro">Pomodoro</li>
-                <li id="short-break">Short Break</li>
-                <li id="long-break">Long Break</li>
+                <li id="pomodoro" tabindex="0" role="button" aria-pressed="false">Pomodoro</li>
+                <li id="short-break" tabindex="0" role="button" aria-pressed="false">Short Break</li>
+                <li id="long-break" tabindex="0" role="button" aria-pressed="false">Long Break</li>
             </ul>
         </div>
-        <div class="timer">
+        <div class="timer" aria-live="polite">
             <div class="minutes"></div>:<div class="seconds"></div>
         </div>
         <button class="button-style" id="start-button">Start</button>
@@ -59,13 +59,15 @@
         <p id="quote-author"></p>
     </div>
 
-    <div id="settings-content">
+    <div id="settings-content" aria-hidden="true">
 
         <div id="timer-settings">
 
             <div class="settings-instruction" id="timer-settings-instruction">Adjust timer's duration:</div>
-            <i class="fa-solid fa-xmark" id="close-button"></i>
-            
+            <div id="close-button" tabindex="0" role="button" aria-label="Close settings">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+
             <label id="pomodoro-settings" for="pomodoro-duration">Pomodoro</label>
             <label id="short-break-settings" for="short-break-duration">Short Break</label>
             <label id="long-break-settings" for="long-break-duration">Long Break</label>
@@ -79,12 +81,12 @@
         <div id="theme-settings">
             <div class="settings-instruction" id="theme-settings-instruction">Select a theme:</div>
             <ul>
-                <li><div id="green-theme"></div></li>
-                <li><div id="blue-theme"></div></li>
+                <li><div id="green-theme" tabindex="0" role="button" aria-label="Green theme"></div></li>
+                <li><div id="blue-theme" tabindex="0" role="button" aria-label="Blue theme"></div></li>
             </ul>
         </div>
 
-        <button class="button-style" id="save-button">Save</button>
+        <button class="button-style" id="save-button" aria-label="Save settings">Save</button>
         
     </div>
     <script src="script.js"></script>
