@@ -15,9 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Michroma&display=swap" rel="stylesheet">
     
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <link href="./styles.css" rel="stylesheet"/>
+    <link href="./styles.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <title>Pomodoro by Lumon</title>
 </head>
@@ -28,6 +28,9 @@
         </div>
         <div class="nav-container" role="navigation" aria-label="Main Navigation">
             <ul>
+                <!-- <li><a href="#mde-content" id="mde" class="tooltip">MDE
+                    <span class="tooltiptext">Music Dance Experience</span>
+                </a></li> -->
                 <li><a href="#settings-content" id="settings">Settings</a></li>
             </ul>
             <img id="logo" src="./assets/logo.svg" alt="Lumon Industries Logo">
@@ -38,9 +41,9 @@
         <div class="timer-instruction">Select an activity and press 'Start':</div>
         <div class="timer-selector">
             <ul>
-                <li id="pomodoro" tabindex="0" role="button" aria-pressed="false">Pomodoro</li>
-                <li id="short-break" tabindex="0" role="button" aria-pressed="false">Short Break</li>
-                <li id="long-break" tabindex="0" role="button" aria-pressed="false">Long Break</li>
+                <li id="pomodoro" tabindex="0">Pomodoro</li>
+                <li id="short-break" tabindex="0">Short Break</li>
+                <li id="long-break" tabindex="0">Long Break</li>
             </ul>
         </div>
         <div class="timer" aria-live="polite">
@@ -72,9 +75,9 @@
             <label id="short-break-settings" for="short-break-duration">Short Break</label>
             <label id="long-break-settings" for="long-break-duration">Long Break</label>
 
-            <input type="number" class="duration-settings" id="pomodoro-duration" name="pomodoro-duration" value="25" min="1" max="60" pattern="\d*" inputmode="numeric" aria-label="Pomodoro duration in minutes">
-            <input type="number" class="duration-settings" id="short-break-duration" name="short-break-duration" value="5" min="1" max="30" pattern="\d*" inputmode="numeric" aria-label="Short break duration in minutes">
-            <input type="number" class="duration-settings" id="long-break-duration" name="long-break-duration" value="15" min="1" max="60" pattern="\d*" inputmode="numeric" aria-label="Long break duration in minutes">
+            <input type="number" class="duration-settings" id="pomodoroInput" name="pomodoro-duration" value="25" min="1" max="60" pattern="\d*" inputmode="numeric" aria-label="Pomodoro duration in minutes">
+            <input type="number" class="duration-settings" id="shortBreakInput" name="short-break-duration" value="5" min="1" max="30" pattern="\d*" inputmode="numeric" aria-label="Short break duration in minutes">
+            <input type="number" class="duration-settings" id="longBreakInput" name="long-break-duration" value="15" min="1" max="60" pattern="\d*" inputmode="numeric" aria-label="Long break duration in minutes">
 
         </div>
 
@@ -89,6 +92,20 @@
         <button class="button-style" id="save-button" aria-label="Save settings">Save</button>
         
     </div>
+
+    <div id="signature">Made with love by <a href="https://github.com/jemappellen">@jemappellen</a>.</div>
+
+    <!-- <div id="mde-content" aria-hidden="true">
+
+        <div class="mde-instruction">|CHOOSE ONE|</div>
+        <div class="mde-content">
+            <p> 8 Hours Work Day Innie Mix</p>
+            <p> Music to Refine to</p>
+            <p> Music of Wellness</p>
+        </div>
+        
+    </div> -->
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -36,7 +36,7 @@ body {
     grid-template-areas:
     "header header"
     "timer-setup quote-generator-settings"
-    ". .";
+    "signature signature";
 }
 
 .button-style {
@@ -103,9 +103,50 @@ header {
     font-weight: 700;
 }
 
-.nav-container a:active {
+.nav-container a.settings-link-selected {
     font-weight: 700;
 }
+
+/*
+/* 
+.tooltip {
+    position: relative;
+  }
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 180px;
+    color: #3d4c52;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85rem;
+    font-family: 'Inter Tight', 'Helvetica', sans-serif;
+}
+  
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+}
+  
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+*/
 
 #logo {
     height: 120px;
@@ -354,15 +395,15 @@ header {
     grid-area: long-break-settings;
 }
 
-#pomodoro-duration {
+#pomodoroInput {
     grid-area: pomodoro-duration;
 }
 
-#short-break-duration {
+#shortBreakInput {
     grid-area: short-break-duration;
 }
 
-#long-break-duration {
+#longBreakInput {
     grid-area: long-break-duration;
 }
 
@@ -485,5 +526,19 @@ input[type="number"]::-webkit-outer-spin-button:hover {
     font-weight: 700;
 }
 
+/* Signature */
+#signature {
+    grid-area: signature;
+    font-size: 1.3rem;
+    text-align: right;
+    margin-right: 2px;
+    margin-bottom: 1px;
+}
+
+#signature a {
+    color: var(--text-color);
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 

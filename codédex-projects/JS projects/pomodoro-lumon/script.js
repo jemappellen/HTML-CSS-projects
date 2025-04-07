@@ -1,8 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+
   // Timer selector
   const pomodoro = document.getElementById('pomodoro');
   const shortBreak = document.getElementById('short-break');
   const longBreak = document.getElementById('long-break');
+
+  let pomodoroDuration = 25;
+  let shortBreakDuration = 5;
+  let longBreakDuration = 15;
 
   let timer = document.querySelector('.timer');
   let startButton = document.getElementById('start-button');
@@ -19,64 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let interval;
   let isPaused = false;
   let pomodoroCount = 0; // Track the number of completed Pomodoro sessions
-  let quoteInterval;
-  let currentQuoteIndex = 0;
-
-  const quoteText = document.getElementById('quote');
-  const quoteAuthor = document.getElementById('quote-author');
-
-  // Quotes for Pomodoro sessions
-  const pomodoroQuotes = [
-    { text: "A handshake is available upon request.", author: "Ms. Cobel" },
-    { text: "Every time you find yourself here, it’s because you chose to come back.", author: "Mark S." },
-    { text: "No, I don't think severance divides us. I think it brings us together.", author: "Helly R." },
-    { text: "Your resignation request is denied.", author: "Ms. Cobel" },
-    { text: "My delts are embarrassingly good today. My outie does muscle shows for sure.", author: "Dylan G." },
-    { text: "The work is mysterious and important.", author: "Mark S." },
-    { text: "Hey, I know this has been a tough quarter. I’m gonna see about rustling you up some special perks. That sound good?", author: "Mr. Milchick" },
-    { text: "Okay, kids. Let’s find out what’s for dinner.", author: "Irving B." }
-  ];
-
-  // Quotes for break sessions
-  const breakQuotes = [
-    { text: "Take a moment. The pause is a kindness.", author: "Ms. Casey" },
-    { text: "You feel peaceful. You feel rested. You feel happy.", author: "Ms. Casey" },
-    { text: "You have been granted a wellness break. Savor it.", author: "Ms. Cobel" }
-  ];
-
-  const longBreakQuotes = [
-    { text: "Your Outie is kind. Your Outie has brightened people’s days by merely smiling.", author: "Ms. Casey" },
-    { text: "You will be reinvigorated for the company.", author: "Mr. Milchick" },
-    { text: "Upon request, I can also perform a hug.", author: "Ms. Casey" }
-  ];
-
-  // Quotes generator
-  const displayQuote = (quote) => {
-    if (quoteText && quoteAuthor) { // Ensure elements are not null
-      quoteText.textContent = `“${quote.text}”`;
-      quoteAuthor.textContent = quote.author;
-      quoteText.classList.add('visible');
-      quoteAuthor.classList.add('visible');
-    }
-  };
-
-  const hideQuote = () => {
-    if (quoteText && quoteAuthor) {
-      quoteText.classList.remove('visible');
-      quoteAuthor.classList.remove('visible');
-    }
-  };
-
-  const startQuoteRotation = (quotes) => {
-    hideQuote(); // Hide the quote initially
-    currentQuoteIndex = 0;
-    displayQuote(quotes[currentQuoteIndex]);
-
-    quoteInterval = setInterval(() => {
-      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-      displayQuote(quotes[currentQuoteIndex]);
-    }, 20000); // Change quote every 20 seconds
-  };
 
   const resetTimerUI = () => {
     clearInterval(interval);
@@ -104,12 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
     resetTimerUI();
     hideQuote();
     selectTimer(pomodoro);
+
     setTimeout(() => {
-      timer.classList.add('visible');
-      minutes.innerHTML = '25';
+      timer.classList.add('visible'); 
+
+      minutes.innerHTML = `${pomodoroDuration}`.padStart(2, '0');
       seconds.innerHTML = '00';
-      totalSeconds = 25 * 60;
+
+      totalSeconds = pomodoroDuration * 60;
       initialTotalSeconds = totalSeconds;
+
       startQuoteRotation(pomodoroQuotes);
     }, 200); // Delay to allow the transition to complete
   };
@@ -118,13 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
     resetTimerUI();
     hideQuote();
     selectTimer(shortBreak);
+
     setTimeout(() => {
       timer.classList.add('visible');
-      minutes.innerHTML = '05';
+
+      minutes.innerHTML = `${shortBreakDuration}`.padStart(2, '0');
       seconds.innerHTML = '00';
-      totalSeconds = 5 * 60;
+
+      totalSeconds = shortBreakDuration * 60;
       initialTotalSeconds = totalSeconds;
-      startQuoteRotation(breakQuotes);
+
+      startQuoteRotation(shortBreakQuotes);
     }, 200); // Delay to allow the transition to complete
   };
 
@@ -132,12 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
     resetTimerUI();
     hideQuote();
     selectTimer(longBreak);
+
     setTimeout(() => {
       timer.classList.add('visible');
-      minutes.innerHTML = '15';
+
+      minutes.innerHTML = `${longBreakDuration}`.padStart(2, '0');
       seconds.innerHTML = '00';
-      totalSeconds = 15 * 60;
+
+      totalSeconds = longBreakDuration * 60;
       initialTotalSeconds = totalSeconds;
+
       startQuoteRotation(longBreakQuotes);
     }, 200); // Delay to allow the transition to complete
   };
@@ -236,11 +195,83 @@ document.addEventListener('DOMContentLoaded', () => {
   // Request notification permission on page load
   Notification.requestPermission();
 
+  //Quote generator
+  let quoteInterval;
+  let currentQuoteIndex = 0;
+
+  const quoteText = document.getElementById('quote');
+  const quoteAuthor = document.getElementById('quote-author');
+
+  // Quotes for Pomodoro sessions
+  const pomodoroQuotes = [
+    { text: "A handshake is available upon request.", author: "Ms. Cobel" },
+    { text: "Every time you find yourself here, it’s because you chose to come back.", author: "Mark S." },
+    { text: "No, I don't think severance divides us. I think it brings us together.", author: "Helly R." },
+    { text: "Your resignation request is denied.", author: "Ms. Cobel" },
+    { text: "My delts are embarrassingly good today. My outie does muscle shows for sure.", author: "Dylan G." },
+    { text: "The work is mysterious and important.", author: "Mark S." },
+    { text: "Hey, I know this has been a tough quarter. I’m gonna see about rustling you up some special perks. That sound good?", author: "Mr. Milchick" },
+    { text: "Okay, kids. Let’s find out what’s for dinner.", author: "Irving B." }
+  ];
+
+  // Quotes for short break sessions
+  const shortBreakQuotes = [
+    { text: "Take a moment. The pause is a kindness.", author: "Ms. Casey" },
+    { text: "You feel peaceful. You feel rested. You feel happy.", author: "Ms. Casey" },
+    { text: "You have been granted a wellness break. Savor it.", author: "Ms. Cobel" }
+  ];
+
+  //Quotes for long break sessions
+  const longBreakQuotes = [
+    { text: "Your Outie is kind. Your Outie has brightened people’s days by merely smiling.", author: "Ms. Casey" },
+    { text: "You will be reinvigorated for the company.", author: "Mr. Milchick" },
+    { text: "Upon request, I can also perform a hug.", author: "Ms. Casey" }
+  ];
+
+  // Quotes generator
+  const displayQuote = (quote) => {
+    if (quoteText && quoteAuthor) { // Ensure elements are not null
+      quoteText.textContent = `“${quote.text}”`;
+      quoteAuthor.textContent = quote.author;
+      quoteText.classList.add('visible');
+      quoteAuthor.classList.add('visible');
+    }
+  };
+
+  const hideQuote = () => {
+    if (quoteText && quoteAuthor) {
+      quoteText.classList.remove('visible');
+      quoteAuthor.classList.remove('visible');
+    }
+  };
+
+  const startQuoteRotation = (quotes) => {
+    if (settingsContent.classList.contains('visible')) {
+      return; // Don't start the quote rotation if settings are open
+    } else {
+      hideQuote(); // Hide the quote initially
+      currentQuoteIndex = 0;
+      displayQuote(quotes[currentQuoteIndex]);
+
+      quoteInterval = setInterval(() => {
+        currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+        displayQuote(quotes[currentQuoteIndex]);
+      }, 20000); // Change quote every 20 seconds
+    }
+  };
+
+  //Settings visibility
   const settingsLink = document.getElementById('settings');
   const closeButton = document.getElementById('close-button');
   const settingsContent = document.getElementById('settings-content');
 
   // Toggle quote visibility
+ 
+  const stopQuoteRotation = () => {
+    clearInterval(quoteInterval); //Stop the interval
+    hideQuote(); //Hide the quote visually
+  };
+
   const toggleQuoteVisibility = (visible) => {
     if (visible) {
       quoteText.classList.add('visible');
@@ -265,22 +296,27 @@ document.addEventListener('DOMContentLoaded', () => {
   settingsLink.addEventListener('click', (event) => {
     event.preventDefault(); // Prevent default anchor behavior
     if (settingsContent.classList.contains('visible')) {
+      // Close settings content
       settingsContent.classList.remove('visible');
       settingsContent.setAttribute('aria-hidden', 'true');
+      settingsLink.classList.remove('settings-link-selected');
       // Ensure no elements within settingsContent have focus
       settingsContent.querySelectorAll('button, [tabindex="0"]').forEach(el => el.blur());
+      updateQuoteVisibility(); // Update visibility after closing settings
     } else {
+      // Open settings content
       settingsContent.classList.add('visible');
+      settingsLink.classList.add('settings-link-selected');
       settingsContent.setAttribute('aria-hidden', 'false');
-      document.getElementById('pomodoro-duration').focus(); // Focus on the first input
+      stopQuoteRotation(); // Stop the quote rotation when settings are open
     }
-    updateQuoteVisibility(); // Update visibility after toggling settings
   });
 
   // Hide settings content when the close button is clicked
   closeButton.addEventListener('click', () => {
     settingsContent.classList.remove('visible');
     settingsContent.setAttribute('aria-hidden', 'true');
+    settingsLink.classList.remove('settings-link-selected');
     // Ensure no elements within settingsContent have focus
     settingsContent.querySelectorAll('button, [tabindex="0"]').forEach(el => el.blur());
     updateQuoteVisibility(); // Update visibility after closing settings
@@ -295,10 +331,41 @@ document.addEventListener('DOMContentLoaded', () => {
     currentTheme = theme;
   };
 
-  const saveTheme = () => {
-    localStorage.setItem('theme', currentTheme);
-    alert('Theme saved!');
-  };
+  document.getElementById('green-theme').addEventListener('click', () => applyTheme('green-theme-set'));
+  document.getElementById('blue-theme').addEventListener('click', () => applyTheme('blue-theme-set'));
+
+  //Timer duration change and save button event listener
+  document.getElementById('save-button').addEventListener('click', () => {
+    const newPomodoro = parseInt(document.getElementById('pomodoroInput').value);
+    const newShortBreak = parseInt(document.getElementById('shortBreakInput').value);
+    const newLongBreak = parseInt(document.getElementById('longBreakInput').value);
+
+    if (Number.isInteger(newPomodoro) && Number.isInteger(newShortBreak) && Number.isInteger(newLongBreak)) {
+      pomodoroDuration = newPomodoro;
+      shortBreakDuration = newShortBreak;
+      longBreakDuration = newLongBreak;
+
+      localStorage.setItem('theme', currentTheme); //Save selected theme
+
+      alert("Settings saved!"); // change to cursive text under button later
+
+      settingsContent.classList.remove('visible');
+      settingsContent.setAttribute('aria-hidden', 'true');
+      settingsLink.classList.remove('settings-link-selected');
+
+      if (isTimerSelected()) {
+        if (pomodoro.classList.contains('timer-selected')) {
+          selectPomodoro(); // Restart the timer with new duration
+        } else if (shortBreak.classList.contains('timer-selected')) {
+          selectShortBreak(); // Restart the timer with new duration
+        } else if (longBreak.classList.contains('timer-selected')) {
+          selectLongBreak(); // Restart the timer with new duration
+        }
+      }
+    } else {
+      alert("Please enter valid numbers for all fields.");
+    }
+  });
 
   // Load saved theme on page load
   const savedTheme = localStorage.getItem('theme');
@@ -306,13 +373,4 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTheme(savedTheme);
   }
 
-  // Event listeners for theme buttons
-  document.getElementById('green-theme').addEventListener('click', () => applyTheme('green-theme-set'));
-  document.getElementById('blue-theme').addEventListener('click', () => applyTheme('blue-theme-set'));
-
-  // Event listener for save button
-  document.getElementById('save-button').addEventListener('click', saveTheme);
-
-  // Ensure quote visibility is updated on page load
-  updateQuoteVisibility();
 });
