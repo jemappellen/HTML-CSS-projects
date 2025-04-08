@@ -18,6 +18,7 @@
     --timer-text-size: 1.6rem;
     --bg-gradient: linear-gradient(to bottom, #ACC3AD, white, white);
     --theme-accent-color: #ACC3AD;
+    --dark-theme-accent-color: ;
 }
 
 html {
@@ -70,6 +71,7 @@ header {
 .header-name h1 {
     font-size: 4rem;
     line-height: 0.8;
+    color: var(--dark-theme-accent-color);
 }
 
 .nav-container {
@@ -164,7 +166,7 @@ header {
     ". timer-instruction ."
     ". timer-selector ."
     ". timer ."
-    ". timer-buttons ."
+    ". timer-controls ."
     ". progress-bar .";
     margin-left: 6rem;;
 }
@@ -215,6 +217,7 @@ header {
     font-family: var(--timer-quote-font);
     font-size: 5.5rem;
     transition: var(--smooth-appearance-transition);
+    color: var(--dark-theme-accent-color);
 }
 
 .timer.visible {
@@ -222,8 +225,17 @@ header {
     visibility: visible; /* Visible when class is added */
 }
 
+#timer-controls {
+    grid-area: timer-controls;
+    position: relative;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 #start-button, #pause-button {
-    grid-area: timer-buttons;
+    position: absolute;
     opacity: 0;
     visibility: hidden; /* Use visibility to reserve space */
 }
@@ -274,6 +286,7 @@ header {
     top: 0;
     left: 0;
     z-index: 0;
+    color: var(--dark-theme-accent-color);
 }
 
 /*Quote generator*/
@@ -293,6 +306,7 @@ header {
 #quote, #quote-author {
     opacity: 0;
     transition: opacity 200ms ease-out;
+    color: var(--dark-theme-accent-color);
 }
 
 #quote.visible, #quote-author.visible {
@@ -474,7 +488,7 @@ input[type="number"]::-webkit-outer-spin-button:hover {
     display: flex;
 }
 
-#green-theme {
+#green-light-theme {
     width: 55px;
     height: 55px;
     background-image: linear-gradient(to bottom, #acc3ad, white, white);
@@ -486,12 +500,12 @@ input[type="number"]::-webkit-outer-spin-button:hover {
     cursor: pointer;
 }
 
-#green-theme:hover {
+#green-light-theme:hover {
     border: 6px solid #ACC3AD;
     transition: border 150ms ease-in;
 }
 
-#blue-theme {
+#blue-light-theme {
     width: 55px;
     height: 55px;
     background-image: linear-gradient(to bottom, #BFD5D9, white, white);
@@ -499,29 +513,124 @@ input[type="number"]::-webkit-outer-spin-button:hover {
     border-radius: 50%;
     border: 4px solid #BFD5D9;
     transition: border 150ms ease-in;
+    margin-right: 1.5rem;
     cursor: pointer;
 }
 
-#blue-theme:hover {
+#blue-light-theme:hover {
     border: 6px solid #BFD5D9;
     transition: border 150ms ease-in;
 }
 
-.green-theme-set {
+#green-dark-theme {
+    width: 55px;
+    height: 55px;
+    background-image: linear-gradient(to bottom, #344146, #3D4C52, #637074);
+    background-size: cover;
+    border-radius: 50%;
+    border: 4px solid #ACC3AD;
+    transition: border 150ms ease-in;
+    margin-right: 1.5rem;
+    cursor: pointer;
+}
+
+#green-dark-theme:hover {
+    border: 6px solid #ACC3AD;
+    transition: border 150ms ease-in;
+}
+
+#blue-dark-theme {
+    width: 55px;
+    height: 55px;
+    background-image: linear-gradient(to bottom, #344146, #3D4C52, #637074);
+    background-size: cover;
+    border-radius: 50%;
+    border: 4px solid #BFD5D9;
+    transition: border 150ms ease-in;
+    cursor: pointer;
+}
+
+#blue-dark-theme:hover {
+    border: 6px solid #BFD5D9;
+    transition: border 150ms ease-in;
+}
+
+.green-light-theme-set {
     --bg-gradient: linear-gradient(to bottom, #ACC3AD, white, white);
     --theme-accent-color:#ACC3AD;
 }
 
-.blue-theme-set {
+.blue-light-theme-set {
     --bg-gradient: linear-gradient(to bottom, #BFD5D9, white);
     --theme-accent-color:#BFD5D9;
 }
 
-#save-button {
-    margin-right: 2rem;
+.green-dark-theme-set {
+    --bg-gradient: linear-gradient(to bottom, #344146, #3D4C52, #637074);
+    --theme-accent-color:#ACC3AD;
+    --text-color: #D2DBDA;
+    --dark-theme-accent-color: #ACC3AD;
+
+    #progress-percentage {
+        color: #3D4C52;
+    }
+
+    #close-button i {
+        color: #637074;
+    }
+
+    #close-button i:hover {
+        color: #D2DBDA;
+    }
+
+    #signature {
+        color: #9BA6A7;
+    }
+
+    #signature a {
+        color: #9BA6A7;
+    }
+
 }
 
-#save-button:hover {
+.blue-dark-theme-set {
+    --bg-gradient: linear-gradient(to bottom, #344146, #3D4C52, #637074);
+    --theme-accent-color:#BFD5D9;
+    --text-color: #D2DBDA;
+    --dark-theme-accent-color: #BFD5D9;
+
+    #progress-percentage {
+        color: #3D4C52;
+    }
+
+    #close-button i {
+        color: #637074;
+    }
+
+    #close-button i:hover {
+        color: #D2DBDA;
+    }
+
+    #signature {
+        color: #9BA6A7;
+    }
+
+    #signature a {
+        color: #9BA6A7;
+    }
+}
+
+#save-button {
+    cursor: default;
+}
+
+#save-button span {
+    cursor: pointer;
+    transition: var(--hover-text-transition);
+    font-weight: 400;
+}
+
+#save-button span:hover {
     transition: var(--hover-text-transition);
     font-weight: 700;
 }
@@ -533,10 +642,11 @@ input[type="number"]::-webkit-outer-spin-button:hover {
     text-align: right;
     margin-right: 2px;
     margin-bottom: 1px;
+    color: var(--theme-accent-color);
 }
 
 #signature a {
-    color: var(--text-color);
+    color: var(--theme-accent-color);
     text-decoration: underline;
     cursor: pointer;
 }

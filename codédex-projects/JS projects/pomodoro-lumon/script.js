@@ -323,24 +323,50 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Theme change
-  let currentTheme = 'green-theme-set'; // Default theme
+  let currentTheme = 'green-light-theme-set'; // Default theme
 
   const applyTheme = (theme) => {
-    document.documentElement.classList.remove('green-theme-set', 'blue-theme-set');
+    document.documentElement.classList.remove('green-light-theme-set', 'blue-light-theme-set', 'green-dark-theme-set', 'blue-dark-theme-set');
     document.documentElement.classList.add(theme);
     currentTheme = theme;
   };
 
-  document.getElementById('green-theme').addEventListener('click', () => applyTheme('green-theme-set'));
-  document.getElementById('blue-theme').addEventListener('click', () => applyTheme('blue-theme-set'));
+  document.getElementById('green-light-theme').addEventListener('click', () => applyTheme('green-light-theme-set'));
+  document.getElementById('blue-light-theme').addEventListener('click', () => applyTheme('blue-light-theme-set'));
+  document.getElementById('green-dark-theme').addEventListener('click', () => applyTheme('green-dark-theme-set'));
+  document.getElementById('blue-dark-theme').addEventListener('click', () => applyTheme('blue-dark-theme-set'));
 
   //Timer duration change and save button event listener
+  const inputs = document.querySelectorAll('#pomodoroInput, #shortBreakInput, #longBreakInput');
+
+  inputs.forEach((input) => {
+    input.addEventListener('input', (e) => {
+      // Force remove all non-digit characters immediately
+      let digitsOnly = e.target.value.replace(/[^\d]/g, '');
+  
+      // Limit to 2 digits
+      if (digitsOnly.length > 2) {
+        digitsOnly = digitsOnly.slice(0, 2);
+      }
+  
+      // Update only if cleaned version is different
+      if (e.target.value !== digitsOnly) {
+        e.target.value = digitsOnly;
+      }
+    });
+  });
+  
+
   document.getElementById('save-button').addEventListener('click', () => {
     const newPomodoro = parseInt(document.getElementById('pomodoroInput').value);
     const newShortBreak = parseInt(document.getElementById('shortBreakInput').value);
     const newLongBreak = parseInt(document.getElementById('longBreakInput').value);
 
-    if (Number.isInteger(newPomodoro) && Number.isInteger(newShortBreak) && Number.isInteger(newLongBreak)) {
+    if (
+      Number.isInteger(newPomodoro) && newPomodoro >= 1 && newPomodoro <= 60 &&
+      Number.isInteger(newShortBreak) && newShortBreak >= 1 && newShortBreak <= 30 &&
+      Number.isInteger(newLongBreak) && newLongBreak >= 1 && newLongBreak <= 60
+    ) {
       pomodoroDuration = newPomodoro;
       shortBreakDuration = newShortBreak;
       longBreakDuration = newLongBreak;
