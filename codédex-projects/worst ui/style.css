@@ -1,0 +1,122 @@
+body {
+    background: linear-gradient(45deg, neonpink, limegreen);
+    animation: backgroundShift 1s infinite alternate;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    cursor: url('https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif'), auto;
+    overflow-x: hidden;
+  }
+  
+  @keyframes backgroundShift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  
+  .navbar {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(255, 0, 255, 0.5);
+    font-size: 20px;
+    padding: 10px;
+    z-index: 10;
+  }
+  
+  .navbar.top { top: 0; }
+  .navbar.middle { top: 100px; font-size: 30px; }
+  .navbar.upside-down {
+    transform: rotate(180deg);
+    top: 200px;
+    font-family: Wingdings;
+  }
+  
+  .main-title {
+    position: absolute;
+    top: 300px;
+    left: 100px;
+    font-size: 60px;
+    font-family: cursive;
+    color: #ff00ff;
+    text-shadow: 2px 2px #00ff00;
+  }
+  
+  .mystery-button {
+    position: absolute;
+    top: 500px;
+    left: 50px;
+    background-color: red;
+    color: yellow;
+    font-size: 24px;
+    border: 5px dotted cyan;
+    transition: all 0.1s ease-in;
+  }
+  
+  .mystery-button:hover {
+    transform: translateX(200px) rotate(180deg);
+    background-color: black;
+    color: white;
+  }
+  
+  form {
+    position: absolute;
+    top: 700px;
+    left: 70px;
+    background: rgba(255, 255, 0, 0.5);
+    padding: 20px;
+    font-family: cursive;
+    border: 3px groove purple;
+  }
+  
+  input {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  input[type="text"],
+  input[type="email"] {
+    background-color: pink;
+    color: purple;
+  }
+  
+  input::placeholder {
+    color: lime;
+  }
+  
+  button[type="submit"] {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    font-weight: bold;
+    border: 2px dashed black;
+  }
+  
+  .modal {
+    position: absolute;
+    top: 400px;
+    left: 200px;
+    width: 300px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.9);
+    color: lime;
+    border: 5px solid magenta;
+    z-index: -1;
+  }
+  
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #111;
+    color: #0f0;
+    font-family: monospace;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Accessibility nightmares */
+  * {
+    outline: none !important;
+  }
+  
+  :focus {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  

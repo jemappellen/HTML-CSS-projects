@@ -160,14 +160,16 @@ header {
 .timer-setup {
     grid-area: timer-setup;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-auto-rows: repeat(5, auto);
+    grid-template-columns: 1fr 350px 1fr;
+    grid-template-rows: 0.8fr 90px 96.3px 128.8px 58px 31px 1fr;
     grid-template-areas:
+    ". . ."
     ". timer-instruction ."
     ". timer-selector ."
     ". timer ."
     ". timer-controls ."
-    ". progress-bar .";
+    ". progress-bar ."
+    ". . .";
     margin-left: 6rem;;
 }
 
@@ -177,7 +179,6 @@ header {
     font-weight: 700;
     border-left: var(--text-color) 5px solid;
     padding-left: 7px;
-    margin-top: 4rem;
     max-height: fit-content;
 }
 
@@ -186,7 +187,6 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 1rem;
 }
 
 .timer-selector ul {
@@ -256,8 +256,6 @@ header {
     visibility: hidden; /* Use visibility to reserve space */
     display: flex;
     position: relative;
-    margin-top: 1rem;
-    margin-bottom: 6rem;
     height: 2rem;
     width: 100%;
     background-color: var(--text-color);
@@ -650,5 +648,4 @@ input[type="number"]::-webkit-outer-spin-button:hover {
     text-decoration: underline;
     cursor: pointer;
 }
-
 
