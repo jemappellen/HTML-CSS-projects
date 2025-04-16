@@ -1,4 +1,4 @@
-/*Global Styles*/
+/*Global Ruleset*/
 
 * {
     margin: 0;
@@ -366,6 +366,7 @@ header {
 
 #timer-settings-instruction {
     grid-area: timer-settings-instruction;
+    margin-top: 1.6rem;
 }
 
 #close-button {
@@ -373,6 +374,7 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
+    margin-top: 1.6rem;
 }
 
 #close-button i {
@@ -397,14 +399,20 @@ header {
 
 #pomodoro-settings {
     grid-area: pomodoro-settings;
+    display: flex;
+    align-items: flex-end;
 }
 
 #short-break-settings {
     grid-area: short-break-settings;
+    display: flex;
+    align-items: flex-end;
 }
 
 #long-break-settings {
     grid-area: long-break-settings;
+    display: flex;
+    align-items: flex-end;
 }
 
 #pomodoroInput {
@@ -649,3 +657,188 @@ input[type="number"]::-webkit-outer-spin-button:hover {
     cursor: pointer;
 }
 
+/*Media queries*/
+
+/*Laptop*/
+@media only screen and (max-width: 1350px) {
+    #pomodoro-settings {
+        font-size: 1.4rem;
+    }
+    
+    #short-break-settings {
+        font-size: 1.4rem;
+    }
+    
+    #long-break-settings {
+        font-size: 1.4rem;
+    }
+}
+
+/*Laptop small*/
+@media only screen and (max-width: 1100px) {
+    #quote-generator {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+        "quote"
+        "quote-author";
+    }
+
+    .timer-setup {
+        grid-area: timer-setup;
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        grid-template-rows: 0.8fr 90px 96.3px 128.8px 58px 31px 1fr;
+        grid-template-areas:
+        ". ."
+        "timer-instruction ."
+        "timer-selector ."
+        "timer ."
+        "timer-controls ."
+        "progress-bar ."
+        ". .";
+    }
+
+    #timer-settings {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+        "timer-settings-instruction timer-settings-instruction close-button"
+        "pomodoro-settings short-break-settings long-break-settings"
+        "pomodoro-duration short-break-duration long-break-duration";
+    }
+}
+
+/*Tablet Landscape*/
+@media only screen and (max-width: 1024px) {
+    :root {
+        --timer-text-size: 1.3rem;
+    }
+
+    .header-name h1 {
+        font-size: 3rem;
+    }
+
+    #logo {
+        height: 100px;
+        width: auto;
+    }
+
+    .timer-setup {
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: 0.8fr 70px 75px 110px 50px 31px 1fr;
+        grid-template-areas:
+        ". ."
+        "timer-instruction ."
+        "timer-selector ."
+        "timer ."
+        "timer-controls ."
+        "progress-bar ."
+        ". .";
+    }
+
+    .timer {
+        font-size: 4.7rem;
+    }
+
+    #timer-controls {
+        height: 2rem;
+    }
+
+    #progress-bar {
+        height: 1.5rem;
+    }
+    
+    #quote {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+    
+    #quote-author {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+
+    #timer-settings-instruction {
+        margin-top: 4.4rem;
+    }
+
+    #close-button {
+        margin-top: 4.4rem;
+    }
+
+    #pomodoro-settings {
+        font-size: 1.3rem;
+    }
+    
+    #short-break-settings {
+        font-size: 1.3rem;
+    }
+    
+    #long-break-settings {
+        font-size: 1.3rem;
+    }
+
+    #signature {
+        font-size: 1rem;
+    }
+}
+
+/*Tablet Portrait*/
+@media only screen and (max-width: 920px) {
+    header {
+        padding: 1rem 0 0 0;
+    }
+
+    .header-name {
+        margin-left: 3rem;
+    }
+
+    .nav-container {
+        margin-right: 3rem;
+    }
+
+    .timer-setup {
+        margin-left: 3rem;
+    }
+
+    #quote-generator {
+        margin-right: 3rem;
+    }
+
+    #settings-content {
+        margin-right: 3rem;
+    }
+
+
+}
+
+/*Tablet Portrait small*/
+/* @media only screen and (max-width: 768px) {
+    body {
+        grid-template-areas:
+        "header header"
+        "timer-setup timer-setup"
+        "signature signature";
+    }
+
+    .timer-setup {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px 75px 110px 50px 31px;
+        grid-template-areas:
+        "timer-instruction"
+        "timer-selector"
+        "timer"
+        "timer-controls"
+        "progress-bar";
+    }
+    
+    #quote-generator {
+        display: none;
+    }
+}
+*/
+/*Mobile*/
+@media only screen and (max-width: 480px) {
+
+
+}
