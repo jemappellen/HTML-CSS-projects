@@ -1,0 +1,126 @@
+/*General styles ruleset*/
+:root {
+    /*Colors*/
+    --text-color: #292823;
+    --lightest-color: #F2F2EA;
+    --light-color: #ECE9E0;
+    --accent-orange: #FC8C67;
+    --accent-blue: #659FB8;
+    --accent-green: #8CB6AC;
+    /*Font Sizes*/
+    --font-size-xl: 4.3rem;
+    --font-size-m: 2rem;
+    --font-size-s: 1.1rem;
+    /* Space */
+    --bottom-padding: 1rem;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+html {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--lightest-color);
+    background-size: cover;
+    color: var(--text-color);
+}
+h1, h2 {
+    font-size: var(--font-size-xl);
+    font-weight: bolder;
+}
+h3 {
+    font-size: var(--font-size-m);
+    font-weight: bolder;
+}
+p {
+    font-size: var(--font-size-s);
+}
+a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+a:hover {
+    color: var(--accent-orange);
+}
+
+/* Grid layout */
+
+body {
+    display: grid;
+    width: 100vw;
+    height: 
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-rows: repeat(5, auto);
+    grid-template-areas: 
+    "vis-el-l header vis-el-r"
+    "vis-el-l projects vis-el-r"
+    "vis-el-l philosophy vis-el-r"
+    "vis-el-l team vis-el-r"
+    "vis-el-l contact vis-el-r";
+}
+#vis-el-l {
+    grid-area: vis-el-l;
+    margin: auto;
+    text-align: center;
+}
+#vis-el-r {
+    grid-area: vis-el-r;
+    margin: auto;
+    text-align: center;
+}
+header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 4fr 2fr 4fr;
+    grid-auto-rows: auto;
+    grid-template-areas: 
+    "logo . nav";
+}
+header h1 {
+    grid-area: logo;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+header nav {
+    grid-area: nav;
+}
+ul {
+    height: 160px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#nav-projects {
+    grid-area: nav-projects;
+}
+#nav-philosophy {
+    grid-area: nav-philosophy;
+}
+#nav-team {
+    grid-area: nav-team;
+}
+#nav-contact {
+    grid-area: nav-contact;
+}
+#projects {
+    grid-area: projects;
+}
+#philosophy {
+    grid-area: philosophy;
+}
+#team {
+    grid-area: team;
+}
+#contact{
+    grid-area: contact;
+}
+
+
