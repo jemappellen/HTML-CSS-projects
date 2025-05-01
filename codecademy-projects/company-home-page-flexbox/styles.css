@@ -8,9 +8,10 @@
     --accent-blue: #659FB8;
     --accent-green: #8CB6AC;
     /*Font Sizes*/
-    --font-size-xl: 4.3rem;
-    --font-size-m: 2rem;
-    --font-size-s: 1.1rem;
+    --font-size-xl: 4rem;
+    --font-size-m: 1.3rem;
+    --font-size-s: 1rem;
+    --font-size-xs: 0.8rem;
     /* Space */
     --bottom-padding: 1rem;
 }
@@ -39,6 +40,9 @@ h3 {
 p {
     font-size: var(--font-size-s);
 }
+p .card-number {
+    font-size: var(--font-size-xs);
+}
 a{
     text-decoration: none;
     color: var(--text-color);
@@ -47,30 +51,19 @@ a:hover {
     color: var(--accent-orange);
 }
 
-/* Grid layout */
+/* Overall Grid layout */
 
 body {
     display: grid;
     width: 100vw;
-    height: 
-    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(5, auto);
     grid-template-areas: 
-    "vis-el-l header vis-el-r"
-    "vis-el-l projects vis-el-r"
-    "vis-el-l philosophy vis-el-r"
-    "vis-el-l team vis-el-r"
-    "vis-el-l contact vis-el-r";
-}
-#vis-el-l {
-    grid-area: vis-el-l;
-    margin: auto;
-    text-align: center;
-}
-#vis-el-r {
-    grid-area: vis-el-r;
-    margin: auto;
-    text-align: center;
+    "header"
+    "projects"
+    "philosophy"
+    "team"
+    "contact";
 }
 header {
     grid-area: header;
@@ -80,6 +73,12 @@ header {
     grid-template-areas: 
     "logo . nav";
 }
+
+header, section {
+    padding-left: min(100px, 10%);
+    padding-right: min(100px, 10%);
+}
+
 header h1 {
     grid-area: logo;
     height: 160px;
@@ -122,5 +121,320 @@ ul {
 #contact{
     grid-area: contact;
 }
+
+/* Border symbols */
+
+#symbols-left {
+    font-size: var(--font-size-s);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 38px;
+}
+#symbols-right {
+    font-size: var(--font-size-s);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    right: 38px;
+}
+
+/* Projects Section */
+#projects {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.project-card {
+    aspect-ratio: 1/1;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+    align-items: start;
+    justify-items: start;
+}
+
+.project-card h3 {
+    padding-bottom: var(--bottom-padding);
+}
+.project-card p {
+    padding-bottom: 0;
+}
+
+#project-card-0 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#project-card-1 {
+    background-color: var(--accent-orange);
+}
+
+#project-card-2 {
+    background-color: var(--light-color);
+}
+
+#project-card-3 {
+    background-color: var(--accent-blue);
+}
+
+#project-card-4 {
+    background-color: var(--accent-green);
+}
+
+/* Philosophy Section */
+#philosophy {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(7, 82px);
+}
+
+#philosophy-heading-1 {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+#philosophy-heading-2 {
+    grid-column: 7 / span 4;
+    grid-row: 3 / span 2;
+    display: flex;
+    align-items: flex-end;
+    justify-self: center;
+    z-index: 1;
+}
+
+#asterisk-1 {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1;
+    font-size: var(--font-size-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#philosophy-image {
+    grid-column: 4 / span 3;
+    grid-row: 1 / span 7;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#philosophy-image img {
+    width: auto;
+    height: 90%;
+}
+
+#philosophy-p-1 {
+    grid-column: 2 / span 2;
+    grid-row: 3 / span 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 25px;
+}
+
+#philosophy-p-1 p {
+    max-width: 100%;
+}
+
+#philosophy-p-2 {
+    grid-column: 3 / span 2;
+    grid-row: 5 / span 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#philosophy-p-2 p {
+    max-width: 100%;
+}
+
+#philosophy-p-3 {
+    grid-column: 6 / span 4;
+    grid-row: 2 / span 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+#philosophy-p-3 p {
+    max-width: 100%;
+    padding-left: 30px;
+}
+
+#philosophy-p-4 {
+    grid-column: 6 / span 3;
+    grid-row: 6 / span 1;
+    display: flex;
+    align-items: flex-end;
+    justify-self: center;
+}
+
+#philosophy-p-4 p {
+    max-width: 30ch;
+    padding-left: 65px;
+}
+/* Team Section */
+#team {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(7, 82px);
+}
+
+#team-heading-1 {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+#team-heading-2 {
+    grid-column: 4 / span 3;
+    grid-row: 1 / span 2;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    z-index: 1;
+}
+
+#team-heading-3 {
+    grid-column: 9 / span 2;
+    grid-row: 4 / span 2;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    z-index: 1;
+}
+
+#team-member-1 {
+    grid-column: 3 / span 2;
+    grid-row: 3 / span 5;
+}
+
+#team-member-2 {
+    grid-column: 5 / span 2;
+    grid-row: 3 / span 5;
+}
+
+#team-member-3 {
+    grid-column: 7 / span 2;
+    grid-row: 3 / span 5;
+}
+
+.team-member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-self: center;
+}
+
+.team-member-card img {
+    width: auto;
+    height: 230px;
+    align-self: center;
+    padding-bottom: var(--bottom-padding);
+    padding-top: var(--bottom-padding);
+}
+
+.team-member-card h3, .team-member-card p {
+    padding-bottom: var(--bottom-padding);
+    max-width: 180px;
+    text-align: left;
+}
+
+.team-member-card h3 {
+    font-size: var(--font-size-s);
+    font-weight: 400;
+}
+
+/* Contact Section */
+#contact {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(6, 82px) auto;
+}
+
+#contact-heading-1 {
+    grid-column: 3 / span 3;
+    grid-row: 1 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+#contact-heading-2 {
+    grid-column: 6 / span 3;
+    grid-row: 4 / span 1;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    z-index: 1;
+}
+
+#contact-slogan {
+    grid-column: 6 / span 2;
+    grid-row: 2 / span 2;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+#contact-slogan p {
+    max-width: 100%;
+}
+
+#asterisk-2 {
+    grid-column: 3 / span 1;
+    grid-row: 3 / span 1;
+    font-size: var(--font-size-xl);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#semicolon {
+    grid-column: 7 / span 1;
+    grid-row: 5 / span 2;
+    font-size: var(--font-size-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#social-media-links {
+    grid-column: 4 / span 2;
+    grid-row: 3 / span 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#social-media-links h2 {
+    padding-bottom: var(--bottom-padding);
+}
+
+#social-media-links p {
+    text-align: center;
+}
+
+footer {
+    grid-column: 1 / -1;
+    grid-row: 7 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
 
 
