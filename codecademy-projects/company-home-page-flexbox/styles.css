@@ -86,15 +86,21 @@ header h1 {
     align-items: center;
     justify-content: flex-start;
 }
+
 header nav {
     grid-area: nav;
 }
+
 ul {
     height: 160px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+ul li {
+    font-size: var(--font-size-m);
 }
 
 #nav-projects {
@@ -109,18 +115,6 @@ ul {
 #nav-contact {
     grid-area: nav-contact;
 }
-#projects {
-    grid-area: projects;
-}
-#philosophy {
-    grid-area: philosophy;
-}
-#team {
-    grid-area: team;
-}
-#contact{
-    grid-area: contact;
-}
 
 /* Border symbols */
 
@@ -131,6 +125,7 @@ ul {
     top: 0;
     left: 38px;
 }
+
 #symbols-right {
     font-size: var(--font-size-s);
     text-align: center;
@@ -141,8 +136,13 @@ ul {
 
 /* Projects Section */
 #projects {
+    grid-area: projects;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+}
+
+#projects-heading {
+    display: none;
 }
 
 .project-card {
@@ -183,8 +183,13 @@ ul {
     background-color: var(--accent-green);
 }
 
+#semicolon-1 {
+    display: none;
+}
+
 /* Philosophy Section */
 #philosophy {
+    grid-area: philosophy;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(7, 82px);
@@ -280,8 +285,10 @@ ul {
     max-width: 30ch;
     padding-left: 65px;
 }
+
 /* Team Section */
 #team {
+    grid-area: team;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(7, 82px);
@@ -324,6 +331,10 @@ ul {
     grid-row: 3 / span 5;
 }
 
+#team-member-2-800px {
+    display: none;
+}
+
 #team-member-3 {
     grid-column: 7 / span 2;
     grid-row: 3 / span 5;
@@ -357,6 +368,7 @@ ul {
 
 /* Contact Section */
 #contact {
+    grid-area: contact;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(6, 82px) auto;
@@ -432,8 +444,484 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
+/*Media Queries*/
+
+@media (max-width: 1300px) {
+    :root {
+        /*Font Sizes*/
+        --font-size-xl: 4rem;
+        --font-size-m: 1rem;
+        --font-size-s: 0.9rem;
+        /* Space */
+        --bottom-padding: 0.5rem;
+    }
+    
+    p .card-number {
+        display: none;
+    }
+
+    .team-member-card img {
+        height: 210px;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+
+    .team-member-card h3, .team-member-card p {
+        padding-bottom: 1rem;
+        max-width: 160px;
+    }
+
+    #team {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(6, 82px);
+    }
+}
+
+@media (max-width: 1200px) {
+    :root {
+        /*Font Sizes*/
+        --font-size-xl: 3rem;
+        --font-size-m: 1.3rem;
+        --font-size-s: 1rem;
+        --font-size-xs: 0.8rem;
+        /* Space */
+        --bottom-padding: 1rem;
+    }
+
+    header {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "logo"
+        "nav";
+    }
+
+    header h1 {
+        height: auto;
+        padding: 2rem;
+        justify-content: center;
+    }
+
+    ul {
+        height: auto;
+        padding-bottom: 2rem;
+    }
+
+    ul li {
+        padding: 1rem;
+    }
+
+    #projects {
+        grid-template-columns: repeat(3, 1fr);
+        padding-top: 2rem;
+    }
+
+    p .card-number {
+        display: none;
+    }
+
+    /*Philosophy 800px*/
+
+    #philosophy {
+        padding-top: 2rem;
+        grid-template-rows: repeat(8, 82px);
+    }
+    
+    #philosophy-heading-2 {
+        grid-column: 6 / span 5;
+        grid-row: 4 / span 1;
+    }
+    
+    #philosophy-p-1 {
+        grid-column: 1 / span 4;
+        grid-row: 3 / span 1;
+    }
+    
+    #philosophy-p-2 {
+        grid-column: 2 / span 3;
+        grid-row: 5 / span 1;
+    }
+    
+    #philosophy-p-3 {
+        grid-column: 6 / span 5;
+    }
+    
+    #philosophy-p-4 {
+        grid-column: 6 / span 4;
+        align-items: center;
+    }
+    
+    #philosophy-p-4 p {
+        max-width: 100%;
+        padding-left: 40px;
+    }
+
+    /* Team 800px */
+
+    #team {
+        grid-template-rows: repeat(8, 82px);
+    }
+    
+    #team-heading-1 {
+        grid-column: 1 / span 3;
+        grid-row: 1 / span 1;
+    }
+    
+    #team-heading-2 {
+        grid-column: 4 / span 4;
+        grid-row: 2 / span 1;
+        align-items: center;
+    }
+    
+    #team-heading-3 {
+        grid-column: 8 / span 3;
+        grid-row: 3 / span 1;
+    }
+    
+    #team-member-1 {
+        grid-column: 1 / span 3;
+        grid-row: 2 / span 5;
+    }
+    
+    #team-member-2 {
+        display: none;
+    }
+
+    #team-member-2-800px {
+        display: flex;
+        grid-column: 4 / span 4;
+        grid-row: 3 / span 5;
+    }
+    
+    #team-member-3 {
+        grid-column: 8 / span 3;
+        grid-row: 4 / span 5;
+    }
+
+    /*Contact 800px*/
+
+    #contact-heading-1 {
+        grid-column: 2 / span 4;
+    }
+
+    #contact-heading-2 {
+        grid-column: 6 / span 5;
+    }
+
+    #contact-slogan {
+        grid-column: 6 / span 4;
+    }
+
+    #asterisk-2 {
+        grid-column: 2 / span 1;
+    }
+
+    #social-media-links {
+        grid-column: 3 / span 3;
+    }
+
+}
+
+@media (max-width: 820px) {
+
+    ul {
+        flex-direction: column;
+    }
+
+    #projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #project-card-0 {
+        display: none;
+    }
+
+    /* Border symbols */
+
+    #symbols-left {
+        left: 20px;
+    }
+
+    #symbols-right {
+        right: 20px;
+    }
+
+}
+
+@media (max-width: 550px) {
+    
+    #projects {
+        grid-template-columns: repeat(1, 0.7fr);
+        justify-content: center;
+    }
+
+    #project-card-0 {
+        display: none;
+    }
+
+     /* Border symbols */
+
+     #symbols-left {
+        left: 10px;
+    }
+
+    #symbols-right {
+        right: 10px;
+    }
+
+}
+
+@media (max-width: 425px) {
+
+    header h1 {
+        padding: 1rem;
+    }
+
+    ul {
+        padding-bottom: 0;
+    }
+
+    /*Projects 425px*/
+    
+    #projects {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, auto);
+        grid-template-areas: 
+        "projects-heading projects-heading"
+        "project-card-1 ."
+        "project-card-2 project-card-3"
+        "project-card-4 semicolon-1";
+    }
+
+    #projects-heading {
+        grid-area: projects-heading;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 2.5rem;
+    }
+
+    .project-card {
+        aspect-ratio: 1/1;
+        padding: 20px;
+        display: grid;
+        grid-template-rows: 1fr;
+        align-items: center;
+    }
+    
+    .project-card h3 {
+        padding-bottom: var(--bottom-padding);
+        font-size: 1.1rem;
+        font-weight: 400;
+    }
+
+    .project-card p {
+        display: none;
+    }
+    
+    #project-card-0 {
+        grid-area: project-card-0;
+    }
+    
+    #project-card-1 {
+        grid-area: project-card-1;
+    }
+    
+    #project-card-2 {
+        grid-area: project-card-2;
+    }
+    
+    #project-card-3 {
+        grid-area: project-card-3;
+    }
+    
+    #project-card-4 {
+        grid-area: project-card-4;
+    }
+
+    #semicolon-1 {
+        grid-area: semicolon-1;
+        font-size: var(--font-size-xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Philosophy 425px */
+
+    #philosophy {
+        grid-area: philosophy;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(7, 82px);
+        padding-top: 2rem;
+    }
+    
+    #philosophy-heading-1 {
+        grid-column: 3 / span 2;
+        grid-row: 1 / span 1;
+        justify-content: center;
+    }
+    
+    #philosophy-heading-2 {
+        grid-column: 1 / -1;
+        grid-row: 2 / span 1;
+        align-items: center;
+    }
+    
+    #asterisk-1 {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+    }
+    
+    #philosophy-image {
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 7;
+    }
+    
+    #philosophy-p-1 {
+        display: none;
+    }
+    
+    #philosophy-p-2 {
+        grid-column: 2 / span 3;
+        grid-row: 5 / span 1;
+    }
+
+    #philosophy-p-2 p {
+        max-width: 100%;
+        padding-left: 65px;
+    }
+    
+    #philosophy-p-3 {
+        grid-column: 2 / span 3;
+        grid-row: 3 / span 2;
+        align-items: center;
+    }
+
+    #philosophy-p-3 p {
+        max-width: 100%;
+        padding-left: 50px;
+    }
+    
+    #philosophy-p-4 {
+        grid-column: 2 / span 3;
+        grid-row: 6 / span 2;
+    }
+
+    #philosophy-p-4 p {
+        max-width: 100%;
+        padding-left: 90px;
+    }
+
+    /* Team 425px */
+    
+    #team {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, auto);
+        padding-top: 4rem;
+    }
+    
+    #team-heading-1 {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+        justify-self: left;
+    }
+
+    #team-heading-1 span {
+        color: var(--text-color) !important;
+    }
+    
+    #team-heading-2 {
+        grid-column: 2 / span 2;
+        grid-row: 1 / span 1;
+        justify-self: right;
+    }
+
+    #team-heading-2 span {
+        display: none;
+    }
+    
+    #team-heading-3 {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 1;
+        color: var(--accent-orange);
+    }
+    
+    #team-member-1 {
+        grid-column: 1 / span 2;
+        grid-row: 3 / span 1;
+    }
+    
+    #team-member-2 {
+        display: none;
+    }
+    
+    #team-member-2-800px {
+        grid-column: 1 / span 2;
+        grid-row: 4 / span 1;
+    }
+    
+    #team-member-3 {
+        grid-column: 1 / span 2;
+        grid-row: 5 / span 1;
+    }
+
+    .team-member-card img {
+        height: 250px;
+    }
+    
+    .team-member-card h3, .team-member-card p {
+        max-width: 200px;
+    }
+
+    /* Contact Section */
+
+    #contact {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(6, 82px) auto;
+        padding-top: 2rem;
+    }
+
+    #contact-heading-1 {
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
+        text-align: center;
+    }
+
+    #contact-heading-2 {
+        grid-column: 1 / -1;
+        grid-row: 3 / span 2;
+        text-align: right;
+    }
+
+    #contact-slogan {
+        grid-column: 3 / span 2;
+        grid-row: 1 / span 3;
+        align-items: center;
+    }
+
+    #contact-slogan p {
+        max-width: 100%;
+    }
+
+    #asterisk-2 {
+        display: none;
+    }
+
+    #semicolon {
+        display: none;
+    }
+
+    #social-media-links {
+        grid-column: 2 / span 2;
+        grid-row: 4 / span 3;
+    }
+
+}
 
 
 
